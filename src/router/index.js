@@ -1,15 +1,24 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
+import Vue from 'vue';
+import Router from 'vue-router';
+import HelloWorld from '../components/HelloWorld';
+import GridManager from '../components/GridManager';
 
-Vue.use(Router)
+Vue.use(Router);
 
 export default new Router({
-  routes: [
-    {
-      path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
-    }
-  ]
-})
+	mode: 'hash',
+	routes: [
+		{
+		    path: '/',
+			redirect: '/HelloWorld'
+		},
+		{
+			path: '/HelloWorld',
+			component: HelloWorld
+		},
+		{
+			path: '/GridManager',
+			component: GridManager
+		}
+	]
+});

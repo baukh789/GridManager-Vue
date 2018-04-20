@@ -1,6 +1,8 @@
 <template>
   <div class="hello">
+    <img src="../assets/logo.png">
     <h1>{{ msg }}</h1>
+    <a href="#/GridManager">GridManager</a>
   </div>
 </template>
 
