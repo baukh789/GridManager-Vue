@@ -3,10 +3,10 @@ import '../../node_modules/gridmanager/js/gm.js';
 import '../../node_modules/gridmanager/css/gm.css';
 
 Vue.component('grid-manager', Vue.extend({
-	template: '<table v-bind:grid-manager="option.gridManagerName" ref="gmTable"></table>',
+	template: '<table></table>',
 	props: ['option'],
 	mounted: function(){
-		var table = this.$refs.gmTable;
+		const table = this.$el;
 		table && table.GM && table.GM(this.option);
 	}
 }));
