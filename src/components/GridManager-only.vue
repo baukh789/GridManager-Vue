@@ -4,6 +4,7 @@
     </div>
 </template>
 <script>
+    import Vue from 'vue';
 	var colData = [
 		{
 			key: 'name',
@@ -26,7 +27,7 @@
 			text: '创建时间',
 			sorting: 'DESC',
 			template: function(createDate, rowObject){
-				return new Date(createDate);
+				return new Date(createDate).toLocaleDateString();
 			}
 		},{
 			key: 'lastDate',
@@ -35,16 +36,17 @@
 			text: '最后修改时间',
 			sorting: '',
 			template: function(lastDate, rowObject){
-				return new Date(lastDate);
+				return new Date(lastDate).toLocaleDateString();
 			}
 		},{
 			key: 'action',
 			remind: 'the action',
 			width: '100px',
 			text: '操作',
-			template: function(action, rowObject){
-				return '<span class="plugin-action edit-action" learnLink-id="'+rowObject.id+'">编辑</span>'
-						+'<span class="plugin-action del-action" learnLink-id="'+rowObject.id+'">删除</span>';
+			template: (action, rowObject) => {
+			    var fn = this.a.testGM;
+			    // TODO 这里的域存在问题，需要调一下
+                return '<span class="plugin-action del-action" learnLink-id="'+rowObject.id+'" gm-click="fn">删除</span>';
 			}
 		}];
 	var option = {
@@ -63,10 +65,16 @@
 	export default {
 		data () {
 			return {
+			    name: 'app',
 				option: option
 			}
-		}
-	}
+		},
+        // 测试vue下的GM事件
+        testGM(o) {
+            console.log('testGM', arguments[0]);
+            return this;
+        }
+    }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
