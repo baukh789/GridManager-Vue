@@ -78,7 +78,12 @@ var app = new Vue({
     methods: {
         // 测试vue下的GM事件
         testGM: function(row) {
-            console.log(row);
+            if(window.confirm('确认要删除['+row.name+']?')){
+                console.log('----删除操作开始----');
+                this.$el.querySelector('table').GM('refreshGrid');
+                console.log('数据没变是正常的, 因为这只是个示例,并不会真实删除数据.');
+                console.log('----删除操作完成----');
+            }
         },
 
         // 事件: 搜索
