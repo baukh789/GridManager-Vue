@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="24239a12-ef8c-4adf-a51c-209e1a4f28e0" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/demo/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/demo/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/demo/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/demo/index.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -19,8 +21,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/demo/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="263">
-              <caret line="37" column="58" lean-forward="true" selection-end-line="48" />
+            <state relative-caret-position="232">
+              <caret line="33" column="45" selection-start-line="33" selection-start-column="45" selection-end-line="33" selection-end-column="45" />
             </state>
           </provider>
         </entry>
@@ -28,8 +30,21 @@
       <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/demo/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="321">
-              <caret line="92" column="34" lean-forward="true" selection-start-line="92" selection-start-column="34" selection-end-line="92" selection-end-column="34" />
+            <state relative-caret-position="162">
+              <caret line="95" lean-forward="true" selection-start-line="95" selection-end-line="95" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/js/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="9" column="30" lean-forward="true" selection-start-line="9" selection-start-column="30" selection-end-line="9" selection-end-column="30" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+                <element signature="e#39#90#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -37,7 +52,7 @@
       <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/demo/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="233">
+            <state relative-caret-position="675">
               <caret line="45" column="22" lean-forward="true" selection-start-line="45" selection-start-column="22" selection-end-line="45" selection-end-column="22" />
             </state>
           </provider>
@@ -46,7 +61,7 @@
       <file leaf-file-name="gm-vue.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dist/css/gm-vue.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="146">
+            <state relative-caret-position="195">
               <caret column="16010" selection-start-column="16010" selection-end-column="16010" />
             </state>
           </provider>
@@ -55,7 +70,7 @@
       <file leaf-file-name="package.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/package.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="203">
+            <state relative-caret-position="360">
               <caret line="24" column="37" selection-start-line="24" selection-start-column="37" selection-end-line="24" selection-end-column="37" />
             </state>
           </provider>
@@ -70,19 +85,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="webpack-common.loader.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/webpack-common.loader.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" column="72" selection-start-line="5" selection-start-column="72" selection-end-line="5" selection-end-column="72" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="webpack-dev-config.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/webpack-dev-config.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="233">
+            <state relative-caret-position="570">
               <caret line="38" column="37" selection-start-line="38" selection-start-column="23" selection-end-line="38" selection-end-column="37" />
             </state>
           </provider>
@@ -91,7 +97,7 @@
       <file leaf-file-name="gm.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/node_modules/gridmanager/css/gm.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="278">
+            <state relative-caret-position="210">
               <caret column="16997" selection-start-column="16997" selection-end-column="16997" />
             </state>
           </provider>
@@ -100,7 +106,7 @@
       <file leaf-file-name="gm.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/node_modules/gridmanager/js/gm.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="218">
+            <state relative-caret-position="1110">
               <caret column="74218" selection-start-column="74218" selection-end-column="74218" />
             </state>
           </provider>
@@ -132,7 +138,12 @@
       <find>extract-text-webpack-plugin</find>
       <find>resolve-url-loader</find>
       <find>vue-loader</find>
+      <find>this.$el.querySelector('table')</find>
+      <find>title</find>
     </findStrings>
+    <replaceStrings>
+      <replace>this.$refs['grid'].$el</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -168,7 +179,6 @@
         <option value="$PROJECT_DIR$/src/css/index.css" />
         <option value="$PROJECT_DIR$/src/css/scss.css" />
         <option value="$PROJECT_DIR$/src/css/index.scss" />
-        <option value="$PROJECT_DIR$/src/js/index.js" />
         <option value="$PROJECT_DIR$/webpack-common.loader.js" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/node_modules/gridmanager/css/gm.css" />
@@ -177,6 +187,7 @@
         <option value="$PROJECT_DIR$/webpack-dev-config.js" />
         <option value="$PROJECT_DIR$/dist/css/gm-vue.css" />
         <option value="$PROJECT_DIR$/src/demo/style.css" />
+        <option value="$PROJECT_DIR$/src/js/index.js" />
         <option value="$PROJECT_DIR$/src/demo/index.html" />
         <option value="$PROJECT_DIR$/src/demo/app.js" />
       </list>
@@ -383,12 +394,14 @@
       <workItem from="1524191129547" duration="13461000" />
       <workItem from="1526458651364" duration="5176000" />
       <workItem from="1527051724626" duration="6086000" />
-      <workItem from="1527138128606" duration="6990000" />
+      <workItem from="1527138128606" duration="7089000" />
+      <workItem from="1527148650348" duration="148000" />
+      <workItem from="1527149293002" duration="496000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="39472000" />
+    <option name="totallyTimeSpent" value="40215000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -403,24 +416,24 @@
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2248062" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2248062" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32969698" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32969698" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32969698" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.31151515" />
+      <window_info anchor="bottom" id="Terminal" order="7" visible="true" weight="0.31151515" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="Messages" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Messages" order="7" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -456,6 +469,34 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/webpack-dev-config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="38" column="37" selection-start-line="38" selection-start-column="23" selection-end-line="38" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/gridmanager/css/gm.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret column="16997" selection-start-column="16997" selection-end-column="16997" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/gridmanager/js/gm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1110">
+          <caret column="74218" selection-start-column="74218" selection-end-column="74218" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/demo/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1305">
+          <caret line="87" lean-forward="true" selection-start-line="87" selection-end-line="87" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/GridManager-i18n.vue" />
     <entry file="file://$PROJECT_DIR$/src/components/Home.vue" />
     <entry file="file://$PROJECT_DIR$/index.html" />
@@ -539,19 +580,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/css/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
-        <state split_layout="FIRST">
-          <first_editor />
-          <second_editor>
-            <js_state />
-          </second_editor>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/css/package.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/css/README.md" />
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
         <state split_layout="FIRST">
@@ -564,44 +593,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/css/js/gm.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-8467" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dist/demo/index.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dist/demo/style.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/css/index.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/js/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="e#39#90#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/css/js/gm.js" />
+    <entry file="file://$PROJECT_DIR$/src/css/index.scss" />
     <entry file="file://$PROJECT_DIR$/dist/js/gm-vue.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1245">
           <caret column="1191" selection-start-column="1191" selection-end-column="1191" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dist/demo/app.js">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/webpack-common.loader.js">
       <provider selected="true" editor-type-id="text-editor">
@@ -612,21 +611,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
+        <state relative-caret-position="360">
           <caret line="24" column="37" selection-start-line="24" selection-start-column="37" selection-end-line="24" selection-end-column="37" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/gridmanager/css/gm.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
+        <state relative-caret-position="210">
           <caret column="16997" selection-start-column="16997" selection-end-column="16997" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/gridmanager/js/gm.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="218">
+        <state relative-caret-position="1110">
           <caret column="74218" selection-start-column="74218" selection-end-column="74218" />
         </state>
       </provider>
@@ -640,36 +639,47 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/webpack-dev-config.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="233">
+        <state relative-caret-position="570">
           <caret line="38" column="37" selection-start-line="38" selection-start-column="23" selection-end-line="38" selection-end-column="37" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/dist/css/gm-vue.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="146">
+        <state relative-caret-position="195">
           <caret column="16010" selection-start-column="16010" selection-end-column="16010" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/demo/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="263">
-          <caret line="37" column="58" lean-forward="true" selection-end-line="48" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/demo/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="233">
+        <state relative-caret-position="675">
           <caret line="45" column="22" lean-forward="true" selection-start-line="45" selection-start-column="22" selection-end-line="45" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/js/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="30" lean-forward="true" selection-start-line="9" selection-start-column="30" selection-end-line="9" selection-end-column="30" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#39#90#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/demo/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="232">
+          <caret line="33" column="45" selection-start-line="33" selection-start-column="45" selection-end-line="33" selection-end-column="45" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/demo/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="321">
-          <caret line="92" column="34" lean-forward="true" selection-start-line="92" selection-start-column="34" selection-end-line="92" selection-end-column="34" />
+        <state relative-caret-position="162">
+          <caret line="95" lean-forward="true" selection-start-line="95" selection-end-line="95" />
         </state>
       </provider>
     </entry>

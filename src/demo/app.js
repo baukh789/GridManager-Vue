@@ -80,7 +80,7 @@ var app = new Vue({
         testGM: function(row) {
             if(window.confirm('确认要删除['+row.name+']?')){
                 console.log('----删除操作开始----');
-                this.$el.querySelector('table').GM('refreshGrid');
+                this.$refs['grid'].$el.GM('refreshGrid');
                 console.log('数据没变是正常的, 因为这只是个示例,并不会真实删除数据.');
                 console.log('----删除操作完成----');
             }
@@ -89,28 +89,28 @@ var app = new Vue({
         // 事件: 搜索
         onSearch: function() {
             var params = Object.assign({cPage: 1}, this.formData);
-            this.$el.querySelector('table').GM('setQuery', params, function(){
+            this.$refs['grid'].$el.GM('setQuery', params, function(){
                 console.log('setQuery执行成功');
             });
         },
 
         // 事件: 重置
         onReset: function() {
-            this.formData.title = '';
+            this.formData.name = '';
             this.formData.info = '';
             this.formData.url = '';
         },
 
         // 事件: 初始化
         onInit: function() {
-            this.$el.querySelector('table').GM('init', this.option);
+            this.$refs['grid'].$el.GM('init', this.option);
             this.initDisabled = true;
             this.destroyDisabled = false;
         },
 
         // 事件: 销毁
         onDestroy: function() {
-            this.$el.querySelector('table').GM('destroy');
+            this.$refs['grid'].$el.GM('destroy');
             this.initDisabled = false;
             this.destroyDisabled = true;
         }
