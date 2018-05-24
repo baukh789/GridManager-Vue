@@ -4,15 +4,40 @@
     <meta charset="UTF-8">
     <title>GridManager:在Vue中使用</title>
     <!--引入 GridManager 依赖-->
-    <link rel="stylesheet" type="text/css" href="/node_modules/gridmanager/css/gm.css">
-    <script type="text/javascript" src="/node_modules/gridmanager/js/gm.js"></script>
     <!--引入vue 依赖-->
     <script src="https://cdn.bootcss.com/vue/2.5.9/vue.min.js"></script>
-    <script src="../js/gm-vue.js"></script>
+    <script src="/js/gm-vue.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/gm-vue.css">
+    <link rel="stylesheet" type="text/css" href="./style.css">
 </head>
 <body>
 <div id="app">
-    <grid-manager v-bind:option="option"></grid-manager>
+    <section class="search-area">
+        <div class="sa-ele">
+            <label class="se-title">名称:</label>
+            <input class="se-con" v-model="formData.name"/>
+        </div>
+        <div class="sa-ele">
+            <label class="se-title">使用说明:</label>
+            <input class="se-con" v-model="formData.info"/>
+        </div>
+        <div class="sa-ele">
+            <label class="se-title">url:</label>
+            <input class="se-con" v-model="formData.url"/>
+        </div>
+        <div class="sa-ele">
+            <button class="search-action" @click="onSearch()">搜索</button>
+            <button class="reset-action" @click="onReset()">重置</button>
+        </div>
+    </section>
+    <section class="grid-main">
+        <grid-manager v-bind:option="option"></grid-manager>
+    </section>
+
+    <section class="bottom-bar">
+        <button id="init-gm" @click="onInit()" v-bind:disabled="initDisabled">init</button>
+        <button id="destroy-gm" @click="onDestroy()" v-bind:disabled="destroyDisabled">destroy</button>
+    </section>
 </div>
 <script src="app.js"></script>
 </body>

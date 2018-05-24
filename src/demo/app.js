@@ -8,6 +8,7 @@ var colData = [
     },{
         key: 'info',
         remind: 'the info',
+        width: '200px',
         text: '使用说明'
     },{
         key: 'url',
@@ -45,9 +46,24 @@ var colData = [
 var app = new Vue({
     el: '#app',
     data: {
+        // 表单数据
+        formData: {
+            name: '',
+            info: '',
+            url: ''
+        },
+
+        // 初始化按纽禁用标识
+        initDisabled: true,
+
+        // 销毁按纽禁用标识
+        destroyDisabled: true,
+
+        // GM所需参数
         option: {
             gridManagerName: "testVue",
-            height: "400px",
+            // height: document.documentElement.clientHeight + 'px', // 全屏
+            height: '400px',
             columnData: colData,
             supportRemind: true,
             isCombSorting:  true,
@@ -63,6 +79,41 @@ var app = new Vue({
         // 测试vue下的GM事件
         testGM: function(row) {
             console.log(row);
+        },
+
+        // 事件: 搜索
+        onSearch: function() {
+            var params = Object.assign({cPage: 1}, this.formData);
+            this.$el.querySelector('table').GM('setQuery', params, function(){
+                console.log('setQuery执行成功');
+            });
+        },
+
+        // 事件: 重置
+        onReset: function() {
+            this.formData.title = '';
+            this.formData.info = '';
+            this.formData.url = '';
+        },
+
+        // 事件: 初始化
+        onInit: function() {
+            this.$el.querySelector('table').GM('init', this.option);
+            this.initDisabled = true;
+            this.destroyDisabled = false;
+        },
+
+        // 事件: 销毁
+        onDestroy: function() {
+            this.$el.querySelector('table').GM('destroy');
+            this.initDisabled = false;
+            this.destroyDisabled = true;
         }
+    },
+
+    // 创建完成
+    created: function(){
+        this.initDisabled = true;
+        this.destroyDisabled = false;
     }
 });

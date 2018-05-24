@@ -9,6 +9,10 @@
 ## ENV
 ES2015 + webpack + Vue + gridmanager
 
+## Core code
+- [GridManager](https://github.com/baukh789/GridManager)
+- [jTool](https://github.com/baukh789/jTool)
+
 ## API
 - [API](http://gridmanager.lovejavascript.com/api/index.html)
 - [Demo](http://www.lovejavascript.com/node_modules/GridManager/demo/index.html)

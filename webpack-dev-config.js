@@ -1,4 +1,5 @@
 const path = require('path');
+const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin');
 const genRules = require('./webpack-common.loader');
 const config = {
 	// map
@@ -30,6 +31,16 @@ const config = {
 		// publicPath 对于热替换（HMR）是必须的，让webpack知道在哪里载入热更新的模块（chunk）
 		publicPath: "/"
 	},
+
+    // 以插件形式定制webpack构建过程
+    plugins: [
+        // 将样式文件 抽取至独立文件内
+        new ExtractTextWebpackPlugin({
+            filename: 'css/gm-vue.css',
+            disable: false,
+            allChunks: true
+        })
+    ],
 
 	// 处理项目中的不同类型的模块
 	module: {
