@@ -10,11 +10,14 @@ const config = {
 
 	// 入口文件配置
 	entry: {
-		js: './js/index.js'
+		js: './demo/app.js'
 	},
 
 	// 配置模块如何解析
 	resolve:{
+        alias: {
+            'vue$': 'vue/dist/vue.esm.js'
+        },
 		extensions: [".js"] //当requrie的模块找不到时,添加这些后缀
 	},
 
@@ -23,11 +26,20 @@ const config = {
 		moduleExtensions: ['-loader']
 	},
 
+    // 排除
+    // externals: {
+    //     'vue': {
+    //         root: 'Vue',
+    //         commonjs: 'vue',
+    //         commonjs2: 'vue',
+    //         amd: 'vue'
+    //     }
+    // },
 
 	// 文件导出的配置
 	output:{
 		// path: '/' ,
-		filename: "js/gm-vue.js",
+		filename: "js/app.js",
 		// publicPath 对于热替换（HMR）是必须的，让webpack知道在哪里载入热更新的模块（chunk）
 		publicPath: "/"
 	},
@@ -36,7 +48,7 @@ const config = {
     plugins: [
         // 将样式文件 抽取至独立文件内
         new ExtractTextWebpackPlugin({
-            filename: 'css/gm-vue.css',
+            filename: 'css/app.css',
             disable: false,
             allChunks: true
         })

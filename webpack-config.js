@@ -17,6 +17,9 @@ const config = {
 
 	// 配置模块如何解析
 	resolve:{
+        alias: {
+            'vue$': 'vue/dist/vue.esm.js'
+        },
 		extensions: [".js"] //当requrie的模块找不到时,添加这些后缀
 	},
 
@@ -26,9 +29,12 @@ const config = {
 	},
 
 	// 文件导出的配置
+    // http://www.css88.com/doc/webpack2/configuration/output/
 	output:{
 		path: buildPath ,
-		filename: "js/gm-vue.js"
+		filename: "js/gm-vue.js",
+        library: 'GridManager',
+        libraryTarget: "umd"
 	},
 
 	// 以插件形式定制webpack构建过程
@@ -47,7 +53,6 @@ const config = {
 		// 将文件复制到构建目录
 		// CopyWebpackPlugin-> https://github.com/webpack-contrib/copy-webpack-plugin
 		new CopyWebpackPlugin([
-			{from: __dirname + '/src/demo', to: 'demo'},
 			{from: path.join(__dirname, '/package.json'), to: '', toType: 'file'},
 			{from: path.join(__dirname, '/README.md'), to: '', toType: 'file'}
 		]),

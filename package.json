@@ -1,8 +1,8 @@
 {
   "name": "gridmanager-vue",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "gridmanager by vue",
-  "main": "index.js",
+  "main": "js/gm-vue.js",
   "scripts": {
     "start": "node server",
     "build": "webpack --config webpack-config.js"
@@ -28,12 +28,12 @@
     "css-loader": "^0.28.10",
     "express": "^4.16.3",
     "extract-text-webpack-plugin": "2.1.2",
+    "gridmanager": "^2.5.8",
     "webpack": "2.7.0",
     "webpack-dev-middleware": "^2.0.4"
   },
   "homepage": "https://github.com/baukh789/GridManager-Angular-1.x#readme",
   "dependencies": {
-    "gridmanager": "^2.5.5",
     "vue": "^2.5.2"
   }
 }

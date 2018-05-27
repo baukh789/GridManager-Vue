@@ -4,14 +4,15 @@ html, body{
     margin: 0;
     padding: 0;
 }
-.plugin-action{
+table .plugin-action{
     display: inline-block;
     color: steelblue;
     margin-right: 10px;
     cursor: pointer;
+    text-decoration: none;
 }
-.plugin-action:hover{
-    text-decoration:underline;
+table .plugin-action:hover{
+    text-decoration: underline;
 }
 .search-area{
     padding: 10px 20px;
