@@ -28,6 +28,11 @@ const config = {
 		moduleExtensions: ['-loader']
 	},
 
+    // 防止将某些 import 包(package)打包到 bundle 中
+    externals: {
+        'vue': 'vue'
+    },
+
 	// 文件导出的配置
     // http://www.css88.com/doc/webpack2/configuration/output/
 	output:{
