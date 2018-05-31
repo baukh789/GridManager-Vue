@@ -1,5 +1,5 @@
 # GridManager Vue
-> 基于 Vue 的 GridManager 封装, 用于便捷的在 Vue 中使用GridManager.
+> 基于 Vue 的 GridManager 封装, 用于便捷的在 Vue 中使用GridManager. 除过Vue特性外，其它API与GridManager API相同。
 
 [![Build Status](https://travis-ci.org/baukh789/GridManager.svg?branch=master&style=flat-square)](https://travis-ci.org/baukh789/GridManager)
 [![npm version](https://img.shields.io/npm/v/gridmanager-vue.svg?style=flat-square)](https://www.npmjs.com/package/gridmanager-vue)
@@ -115,8 +115,11 @@ new Vue({
 
         // 每页显示条数
         pageSize: 20
+
+        // 更多配置请参考GridManager API,
     };
 ```
+
 ## Core code
 - [GridManager](https://github.com/baukh789/GridManager)
 - [jTool](https://github.com/baukh789/jTool)
