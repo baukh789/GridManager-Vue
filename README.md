@@ -17,13 +17,13 @@ npm install gridmanager-vue
 ## 使用
 ### Vue全局组件
 ```javascript
-import GridManager from 'gridmanager';
+import GridManager from 'gridmanager-vue';
 Vue.use(GridManager);
 ```
 
 ### Vue局部组件
 ```javascript
-import GridManager from 'gridmanager';
+import GridManager from 'gridmanager-vue';
 
 new Vue({
     el: '#app',
@@ -120,6 +120,12 @@ new Vue({
     };
 ```
 
+### 查看当前版本
+
+```javascript
+import GridManager from 'gridmanager-vue';
+console.log('GridManager', GridManager.version);
+```
 ## Core code
 - [GridManager](https://github.com/baukh789/GridManager)
 - [jTool](https://github.com/baukh789/jTool)

@@ -30,7 +30,12 @@ const config = {
 
     // 防止将某些 import 包(package)打包到 bundle 中
     externals: {
-        'vue': 'vue'
+        'vue': {
+            root: 'Vue',
+            commonjs: 'vue',
+            commonjs2: 'vue',
+            amd: 'vue'
+        }
     },
 
 	// 文件导出的配置
