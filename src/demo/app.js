@@ -4,6 +4,16 @@ import GridManager from '../js/index';
 
 Vue.use(GridManager);
 
+const TYPE_MAP = {
+    '1': 'HTML/CSS',
+    '2': 'nodeJS',
+    '3': 'javaScript',
+    '4': '前端鸡汤',
+    '5': 'PM Coffee',
+    '6': '前端框架',
+    '7': '前端相关'
+};
+
 const app = new Vue({
     el: '#app',
     data: {
@@ -22,26 +32,25 @@ const app = new Vue({
 
         // GM所需参数
         option: {
-            gridManagerName: "testVue",
-            ajax_data: 'http://www.lovejavascript.com/blogManager/getBlogList',
-            ajax_type: "POST",
-            query: {pluginId: 1},
-            // 初始渲染时是否加载数据
-            // firstLoading: false,
-            // height: document.documentElement.clientHeight + 'px', // 全屏
-            height: '400px',
-            supportRemind: true,
-            isCombSorting: true,
-            supportAjaxPage: true,
-            supportSorting: true,
-            columnData: [
+            supportRemind: true
+            , gridManagerName: 'test'
+            , height: '400px'
+            , supportAjaxPage: true
+            , supportSorting: true
+            , isCombSorting: false
+            , disableCache: false
+            , ajax_data: 'http://www.lovejavascript.com/blogManager/getBlogList'
+            , ajax_type: 'POST'
+            , supportMenu: true
+            , query: {test: 22}
+            , pageSize: 30
+            , columnData: [
                 {
                     key: 'pic',
                     remind: 'the pic',
                     width: '110px',
                     align: 'center',
                     text: '缩略图',
-                    sorting: '',
                     // 使用函数返回 dom node
                     template: function (pic, rowObject) {
                         var picNode = document.createElement('a');
@@ -84,21 +93,11 @@ const app = new Vue({
                 }, {
                     key: 'type',
                     remind: 'the type',
-                    text: '类型',
+                    text: '博文分类',
+                    width: '100',
                     align: 'center',
-                    isShow: false,
-                    // 使用函数返回 string dom
                     template: function (type, rowObject) {
-                        return `
-                            <select disabled>
-                                <option value="1" ${type === 1 ? 'selected="selected"' : ''}>HTML/CSS</option>
-                                <option value="2" ${type === 2 ? 'selected="selected"' : ''}>nodeJS</option>
-                                <option value="3" ${type === 3 ? 'selected="selected"' : ''}>javaScript</option>
-                                <option value="4" ${type === 4 ? 'selected="selected"' : ''}>前端鸡汤</option>
-                                <option value="5" ${type === 5 ? 'selected="selected"' : ''}>PM Coffee</option>
-                                <option value="6" ${type === 6 ? 'selected="selected"' : ''}>前端框架</option>
-                                <option value="7" ${type === 76 ? 'selected="selected"' : ''}>前端相关</option>
-                            </select>`;
+                        return TYPE_MAP[type];
                     }
                 }, {
                     key: 'info',
@@ -111,8 +110,6 @@ const app = new Vue({
                     width: '100px',
                     align: 'center',
                     text: '作者',
-
-                    // 使用函数返回 string dom
                     template: function (username) {
                         return `<a class="plugin-action" href="https://github.com/baukh789" target="_blank" title="去看看${username}的github">${username}</a>`;
                     }
@@ -122,8 +119,7 @@ const app = new Vue({
                     width: '100px',
                     text: '创建时间',
                     sorting: 'DESC',
-
-                    // 使用函数返回 string text
+                    // 使用函数返回 htmlString
                     template: function (createDate, rowObject) {
                         return new Date(createDate).toLocaleDateString();
                     }
@@ -133,7 +129,7 @@ const app = new Vue({
                     width: '100px',
                     text: '最后修改时间',
                     sorting: '',
-                    // 使用函数返回 string text
+                    // 使用函数返回 htmlString
                     template: function (lastDate, rowObject) {
                         return new Date(lastDate).toLocaleDateString();
                     }
@@ -143,14 +139,17 @@ const app = new Vue({
                     width: '10%',
                     align: 'center',
                     text: '<span style="color: red">操作</span>',
-                    // 使用函数返回 vue template
                     useCompile: true,
+                    // 直接返回 htmlString
                     template: () => {
-                        return '<span class="plugin-action" v-on:click="delectRow(row)">删除</span>';
+                        return '<span class="plugin-action" @click="delectRow(row)">删除</span>';
                     }
                 }
-            ],
-            pageSize: 20
+            ]
+            // 排序后事件
+            , sortingAfter: function (data) {
+                console.log('sortAfter', data);
+            }
         }
     },
     methods: {
