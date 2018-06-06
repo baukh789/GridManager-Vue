@@ -61,7 +61,7 @@ new Vue({
                 key: 'platId',
                 text: '平台',
 
-                // function: return dom
+                // template=> function: return dom
                 template: platId => {
                     const span = document.createElement('span');
                     span.style.color = 'blue';
@@ -72,7 +72,7 @@ new Vue({
                 key: 'platNick',
                 text: '店铺名称',
 
-                // string dom
+                // template=> string dom
                 template: `<span style="color: red">跟据相关法规，该单元格被过滤</span>`
             },{
                 key: 'createTime',
@@ -81,7 +81,7 @@ new Vue({
                 key: 'updateTime',
                 text: '更新时间',
 
-                // function: return string dom
+                // template=> function: return string dom
                 template: updateTime => {
                     return `<span style="color: blue">${updateTime}</span>`;
                 }
@@ -91,10 +91,10 @@ new Vue({
                 width: '100px',
                 align: 'center',
 
-                // 当前tempalte中使用了vue模块，则必须将参数useCompile配置为true
+                // tempalte中使用了vue模块，则必须将参数useCompile配置为true，否则vue模版将不会解析。
                 useCompile: true,
 
-                // function: return vue template, 同时必需配置useCompile=true
+                // template=> function: return vue template, 需配置useCompile=true
                 // vue模版中将自动添加row字段，该字段为当前行所使用的数据
                 // vue模版将不允许再使用template函数中传入的参数
                 template:() => {
@@ -124,7 +124,7 @@ new Vue({
         // 每页显示条数
         pageSize: 20
 
-        // 更多配置请参考GridManager API,
+        // ...更多配置请参考[GridManager API](http://gridmanager.lovejavascript.com/api/index.html),
     };
 ```
 
