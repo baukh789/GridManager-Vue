@@ -139,5 +139,9 @@ console.log('GridManager', GridManager.version);
 - [jTool](https://github.com/baukh789/jTool)
 
 ## API
+> 该文档为GridManager的文档，除了`columnData`中存在差异外，其它使用方式相同。
 - [API](http://gridmanager.lovejavascript.com/api/index.html)
-- [Demo](http://www.lovejavascript.com/node_modules/GridManager/demo/index.html)
+
+
+## Demo
+- [带搜索的表格](http://runjs.cn/code/f3ekkv5d)
