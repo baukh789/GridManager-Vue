@@ -124,7 +124,7 @@ new Vue({
         // 每页显示条数
         pageSize: 20
 
-        // ...更多配置请参考[GridManager API](http://gridmanager.lovejavascript.com/api/index.html),
+        // ...更多配置请参考API
     };
 ```
 
