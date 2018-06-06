@@ -141,7 +141,7 @@ console.log('GridManager', GridManager.version);
 
 
 ## Demo
-- [带搜索的表格](http://runjs.cn/code/f3ekkv5d)
+- [带搜索的表格](http://runjs.cn/code/f3ekkv5d){:target="_blank"}
 
 ## Core code
 - [GridManager](https://github.com/baukh789/GridManager)
