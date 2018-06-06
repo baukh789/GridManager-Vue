@@ -134,9 +134,6 @@ new Vue({
 import GridManager from 'gridmanager-vue';
 console.log('GridManager', GridManager.version);
 ```
-## Core code
-- [GridManager](https://github.com/baukh789/GridManager)
-- [jTool](https://github.com/baukh789/jTool)
 
 ## API
 > 该文档为GridManager的文档，除了`columnData`中存在差异外，其它使用方式相同。
@@ -145,3 +142,7 @@ console.log('GridManager', GridManager.version);
 
 ## Demo
 - [带搜索的表格](http://runjs.cn/code/f3ekkv5d)
+
+## Core code
+- [GridManager](https://github.com/baukh789/GridManager)
+- [jTool](https://github.com/baukh789/jTool)
