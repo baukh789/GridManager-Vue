@@ -6,6 +6,18 @@
 [![npm downloads](https://img.shields.io/npm/dt/gridmanager-vue.svg?style=flat-square)](https://www.npmjs.com/package/gridmanager-vue)
 [![coverage](https://img.shields.io/codecov/c/github/baukh789/GridManager.svg?style=flat-square)](https://codecov.io/gh/baukh789/GridManager)
 
+## API
+> 该文档为GridManager的文档，除了`columnData`中存在差异外，其它使用方式相同。
+- [API](http://gridmanager.lovejavascript.com/api/index.html)
+
+
+## Demo
+- [带搜索的表格](http://runjs.cn/code/f3ekkv5d)
+
+## Core code
+- [GridManager](https://github.com/baukh789/GridManager)
+- [jTool](https://github.com/baukh789/jTool)
+
 ## 开发环境
 ES2015 + webpack + Vue + gridmanager
 
@@ -134,15 +146,3 @@ new Vue({
 import GridManager from 'gridmanager-vue';
 console.log('GridManager', GridManager.version);
 ```
-
-## API
-> 该文档为GridManager的文档，除了`columnData`中存在差异外，其它使用方式相同。
-- [API](http://gridmanager.lovejavascript.com/api/index.html)
-
-
-## Demo
-- [带搜索的表格](http://runjs.cn/code/f3ekkv5d)
-
-## Core code
-- [GridManager](https://github.com/baukh789/GridManager)
-- [jTool](https://github.com/baukh789/jTool)
