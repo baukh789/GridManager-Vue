@@ -54,7 +54,7 @@ new Vue({
     // 表格
     gridOption = {
         // 表格唯一标识
-        gridManagerName: configs.faq2.label,
+        gridManagerName: 'test-gm',
 
         // 高度
         height: '300px',
@@ -124,8 +124,7 @@ new Vue({
 
         // 请求失败后事件
         ajax_error: err => {
-            const remoteError = err && (err.body && (err.body.internalMessage || err.body.message || err.body.msg));
-            remoteError && this.$message.error(remoteError);
+            console.log(err);
         },
 
         // checkbox选择事件
@@ -138,6 +137,19 @@ new Vue({
 
         // ...更多配置请参考API
     };
+```
+
+### 调用公开方法
+> GM对象挂在Element.prototype上，这里是通过vue方式获取table dom。无论通过哪种方式，只要获取到table dom就可通过GM函数调用方法。
+
+```javascript
+// 刷新
+this.$refs['grid'].$el.GM('refreshGrid');
+
+// 更新查询条件
+this.$refs['grid'].$el.GM('setQuery', this.searchForm);
+
+// ...其它更多请直接访问API
 ```
 
 ### 查看当前版本
