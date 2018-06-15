@@ -1,7 +1,8 @@
 import Vue from 'vue';
 import 'gridmanager/css/gm.css';
 import GridManager from 'gridmanager';
-export default  {
+
+export default {
     name: 'GridManagerVue',
     // data: () => {
     //     return {
@@ -39,7 +40,7 @@ export default  {
 
         // 解析Vue 模版, data中的row为固定元素
         // compileList格式为[{th: td element, row: 行数据}]
-        this.option.compileVue = (compileList) =>  {
+        this.option.compileVue = (compileList) => {
             compileList.forEach(item => {
                 const td = item.td;
                 const attrList = [];
@@ -51,6 +52,7 @@ export default  {
                         ele.childNodes.length > 0 && getAllChildren(ele.childNodes);
                     });
                 }
+
                 getAllChildren(td.childNodes);
 
                 // const attributes = td.firstChild.attributes;
@@ -71,14 +73,13 @@ export default  {
                                 if (attr.value.indexOf('(') !== -1) {
                                     return;
                                 }
-
                                 // 特定属性不允许变更
-                                if (attrName === 'row') {
+                                if (attr.name === 'row') {
                                     console.warn('GridManager warn: Vue attribute row can not be defined!');
                                     return;
                                 }
                                 map[attr.value] = _parent[attr.value];
-                                map[attrName] = _parent[attr.value];
+                                map[attr.name] = _parent[attr.value];
                             });
                         });
                         return map;
