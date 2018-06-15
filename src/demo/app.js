@@ -142,7 +142,7 @@ const app = new Vue({
                     useCompile: true,
                     // 直接返回 htmlString
                     template: () => {
-                        return '<span class="plugin-action" @click="delectRow(row)">删除</span>';
+                        return '<span><span class="plugin-action" @click="delectRow(row)">删除</span></span>';
                     }
                 }
             ]
