@@ -97,7 +97,8 @@ const app = new Vue({
                     width: '100',
                     align: 'center',
                     template: function (type, rowObject) {
-                        return TYPE_MAP[type];
+                        // TODO 这里应该支持直接使用文本
+                        return `<span>${TYPE_MAP[type]}</span>`;
                     }
                 }, {
                     key: 'info',

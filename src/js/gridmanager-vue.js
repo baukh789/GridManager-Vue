@@ -55,54 +55,57 @@ export default {
 
                 getAllChildren(td.childNodes);
 
-                // const attributes = td.firstChild.attributes;
+
+                // vue data
+                const dataMap = {
+                    row: item.row
+                };
+
+                // v-model
+                const watchMap = {};
+
+                // v-on
+                const eventList = [];
+
+                attrList.forEach(attributes => {
+                    [].forEach.call(attributes, attr => {
+                        // 当前属性异常或非Vue特定属性
+                        if (!attr.name || !attr.value || !/:|@|v-/g.test(attr.name)) {
+                            return;
+                        }
+
+                        // 特定属性不允许变更
+                        if (attr.name === 'row') {
+                            console.warn('GridManager warn: Vue attribute row can not be defined!');
+                            return;
+                        }
+
+                        // 数据与事件
+                        dataMap[attr.value] = _parent[attr.value];
+                        dataMap[attr.name] = _parent[attr.value];
+
+                        // 双向绑定, 监听数据
+                        if (attr.name === 'v-model') {
+                            watchMap[attr.value] = (newValue, oldValue) => {
+                                _parent[attr.value] = newValue;
+                            };
+                        }
+
+                        // 特殊处理: 包含()的函数
+                        if (attr.value.indexOf('(') !== -1) {
+                            const attrSplit = attr.value.split('(');
+                            const fnName = attrSplit[0];
+                            dataMap[fnName] = _parent[fnName];
+                        }
+
+                    });
+                });
+
                 new Vue({
                     el: td.firstChild,
-                    data: () => {
-                        const map = {
-                            row: item.row
-                        };
-                        attrList.forEach(attributes => {
-                            [].forEach.call(attributes, attr => {
-                                // 当前属性异常或非Vue特定属性
-                                if (!attr.name || !attr.value || !/:|@|v-/g.test(attr.name)) {
-                                    return;
-                                }
-
-                                // 当前属性为函数
-                                if (attr.value.indexOf('(') !== -1) {
-                                    return;
-                                }
-                                // 特定属性不允许变更
-                                if (attr.name === 'row') {
-                                    console.warn('GridManager warn: Vue attribute row can not be defined!');
-                                    return;
-                                }
-                                map[attr.value] = _parent[attr.value];
-                                map[attr.name] = _parent[attr.value];
-                            });
-                        });
-                        return map;
-                    },
-                    template: td.innerHTML,
-                    mounted() {
-                        // 改变Vue特性属性所使用的域
-                        attrList.forEach(attributes => {
-                            [].forEach.call(attributes, attr => {
-                                // 当前属性异常或非Vue特定属性
-                                if (!attr.name || !attr.value || !/:|@/g.test(attr.name)) {
-                                    return;
-                                }
-
-                                // 当前属性为函数
-                                if (attr.value.indexOf('(') !== -1) {
-                                    const attrSplit = attr.value.split('(');
-                                    const fnName = attrSplit[0];
-                                    this[fnName] = _parent[fnName];
-                                }
-                            });
-                        });
-                    }
+                    data: () => dataMap,
+                    watch: watchMap,
+                    template: td.innerHTML
                 });
             });
         };
