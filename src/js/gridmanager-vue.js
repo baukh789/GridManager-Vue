@@ -65,7 +65,7 @@ export default {
                         attrList.forEach(attributes => {
                             [].forEach.call(attributes, attr => {
                                 // 当前属性异常或非Vue特定属性
-                                if (!attr.name || !attr.value || !/:|@/g.test(attr.name)) {
+                                if (!attr.name || !attr.value || !/:|@|v-/g.test(attr.name)) {
                                     return;
                                 }
 
