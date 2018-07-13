@@ -23,7 +23,7 @@ ES2015 + webpack + Vue + gridmanager
 
 ## 安装
 ```
-npm install gridmanager-vue
+npm install gridmanager-vue --save
 ```
 
 ## 使用
