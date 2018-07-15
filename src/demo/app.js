@@ -95,7 +95,9 @@ const app = new Vue({
                     text: '博文分类',
                     width: '100',
                     align: 'center',
+                    // 表头筛选条件, 该值由用户操作后会将选中的值以{key: value}的形式覆盖至query参数内。非必设项
                     filter: {
+                        // 筛选条件列表, 数组对象。格式: [{value: '1', text: 'HTML/CSS'}],在使用filter时该参数为必设项。
                         option: [
                             {value: '1', text: 'HTML/CSS'},
                             {value: '2', text: 'nodeJS'},
@@ -105,12 +107,12 @@ const app = new Vue({
                             {value: '6', text: '前端框架'},
                             {value: '7', text: '前端相关'}
                         ],
-                        // 选中的过滤条件将会覆盖query
+                        // 筛选选中项，字符串, 默认为''。 非必设项，选中的过滤条件将会覆盖query
                         selected: '3',
+                        // 否为多选, 布尔值, 默认为false。非必设项
                         isMultiple: false
                     },
                     template: function (type, rowObject) {
-                        // TODO 这里应该支持直接使用文本
                         return `<span>${TYPE_MAP[type]}</span>`;
                     }
                 }, {
