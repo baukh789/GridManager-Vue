@@ -92,17 +92,29 @@ const app = new Vue({
                     }
                 }, {
                     key: 'type',
-                    remind: 'the type',
                     text: '博文分类',
                     width: '100',
                     align: 'center',
+                    filter: {
+                        option: [
+                            {value: '1', text: 'HTML/CSS'},
+                            {value: '2', text: 'nodeJS'},
+                            {value: '3', text: 'javaScript'},
+                            {value: '4', text: '前端鸡汤'},
+                            {value: '5', text: 'PM Coffee'},
+                            {value: '6', text: '前端框架'},
+                            {value: '7', text: '前端相关'}
+                        ],
+                        // 选中的过滤条件将会覆盖query
+                        selected: '3',
+                        isMultiple: false
+                    },
                     template: function (type, rowObject) {
                         // TODO 这里应该支持直接使用文本
                         return `<span>${TYPE_MAP[type]}</span>`;
                     }
                 }, {
                     key: 'info',
-                    remind: 'the info',
                     text: '简介',
                     isShow: false
                 }, {
