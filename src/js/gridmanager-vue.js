@@ -39,10 +39,15 @@ export default {
         };
 
         // 解析Vue 模版, data中的row为固定元素
-        // compileList格式为[{th: td element, row: 行数据}]
+        // compileList格式为[{el: element, row: 行数据}]
         this.option.compileVue = (compileList) => {
+            console.log(compileList);
             compileList.forEach(item => {
-                const td = item.td;
+                const el = item.el;
+                // 无效的解析对象
+                if (el.firstChild.nodeType !== 1) {
+                    return;
+                }
                 const attrList = [];
 
                 // 递归存储attributes
@@ -53,7 +58,7 @@ export default {
                     });
                 }
 
-                getAllChildren(td.childNodes);
+                getAllChildren(el.childNodes);
 
 
                 // vue data
@@ -63,9 +68,6 @@ export default {
 
                 // v-model
                 const watchMap = {};
-
-                // v-on
-                const eventList = [];
 
                 attrList.forEach(attributes => {
                     [].forEach.call(attributes, attr => {
@@ -102,10 +104,10 @@ export default {
                 });
 
                 new Vue({
-                    el: td.firstChild,
+                    el: el.firstChild,
                     data: () => dataMap,
                     watch: watchMap,
-                    template: td.innerHTML
+                    template: el.innerHTML
                 });
             });
         };
