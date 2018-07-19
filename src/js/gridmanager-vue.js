@@ -41,7 +41,6 @@ export default {
         // 解析Vue 模版, data中的row为固定元素
         // compileList格式为[{el: element, row: 行数据}]
         this.option.compileVue = (compileList) => {
-            console.log(compileList);
             compileList.forEach(item => {
                 const el = item.el;
                 // 无效的解析对象
