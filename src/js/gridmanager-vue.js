@@ -70,8 +70,18 @@ export default {
 
                 attrList.forEach(attributes => {
                     [].forEach.call(attributes, attr => {
-                        // 当前属性异常或非Vue特定属性
-                        if (!attr.name || !attr.value || !/:|@|v-/g.test(attr.name)) {
+                        // 属性名或属性值为空将跳出:
+                        if (!attr.name || !attr.value) {
+                            return;
+                        }
+
+                        // 属性名不满足以下形式将跳出:
+                        // 非v-model
+                        // 非bind或bind的简写形式
+                        // 非on或on的简写形式
+                        if (attr.name !== 'v-model'
+                            && attr.name !== 'v-bind' && !/:/g.test(attr.name)
+                            && attr.name !== 'v-on' && !/@/g.test(attr.name)) {
                             return;
                         }
 
@@ -82,8 +92,9 @@ export default {
                         }
 
                         // 数据与事件
-                        dataMap[attr.value] = _parent[attr.value];
-                        dataMap[attr.name] = _parent[attr.value];
+                        // TODO 明天需要验证一下
+                        // dataMap[attr.value] = _parent[attr.value];
+                        // dataMap[attr.name] = _parent[attr.value];
 
                         // 双向绑定, 监听数据
                         if (attr.name === 'v-model') {
@@ -92,15 +103,18 @@ export default {
                             };
                         }
 
-                        // 特殊处理: 包含()的函数
+                        // 特殊处理: 包含()的函数。这种函数不需要将其value值赋于data
                         if (attr.value.indexOf('(') !== -1) {
                             const attrSplit = attr.value.split('(');
                             const fnName = attrSplit[0];
                             dataMap[fnName] = _parent[fnName];
+                        } else if(typeof _parent[attr.value] !== 'undefined'){
+                            // 父域中并不存在时跳出
+                            dataMap[attr.value] = _parent[attr.value];
                         }
-
                     });
                 });
+                console.log(dataMap);
 
                 new Vue({
                     el: el.firstChild,
