@@ -103,19 +103,51 @@ export default {
                             };
                         }
 
+                        // 整理data 中即将存储的 key名称
+                        let dataKey = null;
+
                         // 特殊处理: 包含()的函数。这种函数不需要将其value值赋于data
+                        // ex: @click="openDialog(row)"
                         if (attr.value.indexOf('(') !== -1) {
-                            const attrSplit = attr.value.split('(');
-                            const fnName = attrSplit[0];
-                            dataMap[fnName] = _parent[fnName];
-                        } else if(typeof _parent[attr.value] !== 'undefined'){
-                            // 父域中并不存在时跳出
-                            dataMap[attr.value] = _parent[attr.value];
+                            dataKey = attr.value.split('(')[0];
                         }
+                        // ex: @click="openDialog"
+                        else if (typeof attr.value === 'function') {
+                            dataKey = attr.value;
+                        }
+                        // ex: v-model="currentInfo"
+                        else if (attr.name === 'v-model') {
+                            dataKey = attr.value;
+                        }
+
+                        // ex: v-bind:info="currentInfo"
+                        // ex: :info="currentInfo"
+                        else if (attr.name.split(':')[1]) {
+                            dataKey = attr.value;
+                        }
+
+                        // TODO 以下情况不会被赋值
+                        // :title="userName" 中的 title不会被赋值，但是userName会被赋值
+
+                        // 父域中并不存在时跳出
+                        if (typeof _parent[dataKey] === 'undefined') {
+                            return;
+                        }
+
+                        // 为data进行赋值
+                        dataMap[dataKey] = _parent[dataKey];
+
+                        //
+                        // if (attr.value.indexOf('(') !== -1) {
+                        //     const attrSplit = attr.value.split('(');
+                        //     const fnName = attrSplit[0];
+                        //     dataMap[fnName] = _parent[fnName];
+                        //     //  父域中并不存在时跳出
+                        // } else if(typeof _parent[attr.value] !== 'undefined'){
+                        //     dataMap[attr.value] = _parent[attr.value];
+                        // }
                     });
                 });
-                console.log(dataMap);
-
                 new Vue({
                     el: el.firstChild,
                     data: () => dataMap,
