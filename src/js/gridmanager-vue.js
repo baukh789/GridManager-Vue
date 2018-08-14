@@ -136,16 +136,6 @@ export default {
 
                         // 为data进行赋值
                         dataMap[dataKey] = _parent[dataKey];
-
-                        //
-                        // if (attr.value.indexOf('(') !== -1) {
-                        //     const attrSplit = attr.value.split('(');
-                        //     const fnName = attrSplit[0];
-                        //     dataMap[fnName] = _parent[fnName];
-                        //     //  父域中并不存在时跳出
-                        // } else if(typeof _parent[attr.value] !== 'undefined'){
-                        //     dataMap[attr.value] = _parent[attr.value];
-                        // }
                     });
                 });
                 new Vue({
