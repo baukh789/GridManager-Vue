@@ -74,7 +74,11 @@ gridOption = {
             text: '平台',
 
             // template=> function: return dom
-            template: platId => {
+            // 参数介绍
+            // platId: 当前行数据中与配置项key相同字段的值
+            // row: 当前行数据
+            // index: 当前行所在数据中的索引值
+            template: (platId, row, index) => {
                 const span = document.createElement('span');
                 span.style.color = 'blue';
                 span.innerText = platId;
