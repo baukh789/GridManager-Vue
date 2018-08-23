@@ -160,6 +160,10 @@ gridOption = {
 };
 ```
 
+### vue-class-component
+使用`vue-class-component`时，`GridManager`中所使用的this指向class，而非Vue.
+如果需要将this指向vue, 可以通过将`GridManager`的配置项写在created内来实现。
+
 ### 调用公开方法
 > GM对象挂在Element.prototype上，这里是通过vue方式获取table dom。无论通过哪种方式，只要获取到table dom就可通过GM函数调用方法。
 
