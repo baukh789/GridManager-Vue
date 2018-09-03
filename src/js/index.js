@@ -14,7 +14,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 // GridManagerVue 的版本号。 需要注意的是: 这仅仅是vue环境的壳, 验证功能需要查看GridManager的版本号
-GridManagerVue.version = '1.0.5';
+GridManagerVue.version = '1.0.6';
 
 export default GridManagerVue;
 
