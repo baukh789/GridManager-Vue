@@ -4,6 +4,7 @@ import GridManager from '../js/index';
 
 Vue.use(GridManager);
 
+// 常量: 搜索条件
 const TYPE_MAP = {
     '1': 'HTML/CSS',
     '2': 'nodeJS',
@@ -14,6 +15,34 @@ const TYPE_MAP = {
     '7': '前端相关'
 };
 
+// 模拟的一个promise请求
+const getBlogList = function(paramse) {
+    return new Promise((resolve, reject) => {
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', 'http://www.lovejavascript.com/blogManager/getBlogList');
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState !== 4) {
+                return;
+            }
+            if (xhr.status >= 200 && xhr.status < 300 || xhr.status === 304) {
+                resolve(xhr.response);
+            } else {
+                reject(xhr);
+            }
+        };
+
+        // 一个简单的处理参数的示例
+        let formData = '';
+        for (let key in paramse) {
+            if(formData !== '') {
+                formData += '&';
+            }
+            formData += key + '=' + paramse[key];
+        }
+        xhr.send(formData);
+    });
+};
 const app = new Vue({
     el: '#app',
     data: {
@@ -32,19 +61,21 @@ const app = new Vue({
 
         // GM所需参数
         option: {
-            supportRemind: true
-            , gridManagerName: 'test'
-            , height: '400px'
-            , supportAjaxPage: true
-            , supportSorting: true
-            , isCombSorting: false
-            , disableCache: false
-            , ajax_data: 'http://www.lovejavascript.com/blogManager/getBlogList'
-            , ajax_type: 'POST'
-            , supportMenu: true
-            , query: {test: 22}
-            , pageSize: 30
-            , columnData: [
+            supportRemind: true,
+            gridManagerName: 'test',
+            height: '400px',
+            supportAjaxPage: true,
+            supportSorting: true,
+            isCombSorting: false,
+            disableCache: false,
+            ajax_data: (settings, parsme) => {
+                return getBlogList(parsme);
+            },
+            ajax_type: 'POST',
+            supportMenu: true,
+            query: {test: 22},
+            pageSize: 30,
+            columnData: [
                 {
                     key: 'pic',
                     remind: 'the pic',
@@ -74,7 +105,6 @@ const app = new Vue({
                 }, {
                     key: 'title',
                     remind: 'the title',
-                    width: '300px',
                     align: 'left',
                     text: '标题',
                     sorting: '',
@@ -93,7 +123,7 @@ const app = new Vue({
                 }, {
                     key: 'type',
                     text: '博文分类',
-                    width: '100',
+                    width: '120',
                     align: 'center',
                     // 表头筛选条件, 该值由用户操作后会将选中的值以{key: value}的形式覆盖至query参数内。非必设项
                     filter: {
@@ -118,6 +148,7 @@ const app = new Vue({
                 }, {
                     key: 'info',
                     text: '简介',
+                    width: '100px',
                     isShow: false
                 }, {
                     key: 'username',
@@ -151,7 +182,6 @@ const app = new Vue({
                 }, {
                     key: 'action',
                     remind: 'the action',
-                    width: '10%',
                     align: 'center',
                     text: '<span style="color: red">操作</span>',
                     useCompile: true,
@@ -160,9 +190,9 @@ const app = new Vue({
                         return '<span class="plugin-action" @click="delectRow(row)">删除</span>';
                     }
                 }
-            ]
+            ],
             // 排序后事件
-            , sortingAfter: function (data) {
+            sortingAfter: function (data) {
                 console.log('sortAfter', data);
             }
         }
