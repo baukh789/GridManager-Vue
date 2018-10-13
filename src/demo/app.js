@@ -19,7 +19,7 @@ const TYPE_MAP = {
 const getBlogList = function(paramse) {
     return new Promise((resolve, reject) => {
         const xhr = new XMLHttpRequest();
-        xhr.open('POST', 'http://www.lovejavascript.com/blogManager/getBlogList');
+        xhr.open('POST', 'https://www.lovejavascript.com/blogManager/getBlogList');
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
         xhr.onreadystatechange = function() {
             if (xhr.readyState !== 4) {
