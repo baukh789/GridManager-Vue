@@ -12,7 +12,7 @@
 
 
 ## Demo
-- [带搜索的表格](http://runjs.cn/code/f3ekkv5d)
+- [带搜索的表格](https://jsfiddle.net/baukh/0q7Lj59y/19/)
 
 ## Core code
 - [GridManager](https://github.com/baukh789/GridManager)
