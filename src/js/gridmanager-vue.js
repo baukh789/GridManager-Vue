@@ -51,7 +51,7 @@ export default {
 
                 // 递归存储attributes
                 function getAllChildren(childNodes) {
-                    childNodes.length > 0 && childNodes.forEach(ele => {
+                    childNodes.length > 0 && [].forEach.call(childNodes, ele => {
                         ele.attributes && attrList.push(ele.attributes);
                         ele.childNodes.length > 0 && getAllChildren(ele.childNodes);
                     });
