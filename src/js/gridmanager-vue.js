@@ -4,12 +4,6 @@ import GridManager from 'gridmanager';
 
 export default {
     name: 'GridManagerVue',
-    // data: () => {
-    //     return {
-    //         gmData: null,
-    //         gmError: null
-    //     }
-    // },
     props: {
         option: {
             type: Object,
