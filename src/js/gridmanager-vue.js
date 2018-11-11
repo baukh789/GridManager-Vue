@@ -85,11 +85,6 @@ export default {
                             return;
                         }
 
-                        // 数据与事件
-                        // TODO 明天需要验证一下
-                        // dataMap[attr.value] = _parent[attr.value];
-                        // dataMap[attr.name] = _parent[attr.value];
-
                         // 双向绑定, 监听数据
                         if (attr.name === 'v-model') {
                             watchMap[attr.value] = (newValue, oldValue) => {
@@ -119,9 +114,6 @@ export default {
                         else if (attr.name.split(':')[1]) {
                             dataKey = attr.value;
                         }
-
-                        // TODO 以下情况不会被赋值
-                        // :title="userName" 中的 title不会被赋值，但是userName会被赋值
 
                         // 父域中并不存在时跳出
                         if (typeof _parent[dataKey] === 'undefined') {
