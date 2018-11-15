@@ -18,6 +18,7 @@ export default {
     mounted() {
         const _parent = this.$parent;
 
+        console.log(_parent);
         // 包装ajax_success
         const ajax_success = this.option.ajax_success;
         this.option.ajax_success = (respones) => {
@@ -34,13 +35,13 @@ export default {
 
         // 解析Vue 模版, data中的row为固定元素
         // compileList格式为[{el: element, row: 行数据}]
-        this.option.compileVue = (compileList) => {
+        this.option.compileVue = compileList => {
             compileList.forEach(item => {
                 const el = item.el;
                 // 无效的解析对象
-                if (el.firstChild.nodeType !== 1) {
-                    return;
-                }
+                // if (el.firstChild.nodeType !== 1) {
+                //     return;
+                // }
                 const attrList = [];
 
                 // 递归存储attributes
@@ -53,83 +54,115 @@ export default {
 
                 getAllChildren(el.childNodes);
 
+                //
+                // // vue data
+                // const dataMap = {
+                //     row: item.row
+                // };
+                //
+                // // v-model
+                // const watchMap = {};
+                //
+                // attrList.forEach(attributes => {
+                //     [].forEach.call(attributes, attr => {
+                //         // 属性名或属性值为空将跳出:
+                //         if (!attr.name || !attr.value) {
+                //             return;
+                //         }
+                //
+                //         // 属性名不满足以下形式将跳出:
+                //         // 非v-model
+                //         // 非bind或bind的简写形式
+                //         // 非on或on的简写形式
+                //         if (attr.name !== 'v-model'
+                //             && attr.name !== 'v-bind' && !/:/g.test(attr.name)
+                //             && attr.name !== 'v-on' && !/@/g.test(attr.name)) {
+                //             return;
+                //         }
+                //
+                //         // 特定属性不允许变更
+                //         if (attr.name === 'row') {
+                //             console.warn('GridManager warn: Vue attribute row can not be defined!');
+                //             return;
+                //         }
+                //
+                //         // 双向绑定, 监听数据
+                //         if (attr.name === 'v-model') {
+                //             watchMap[attr.value] = (newValue, oldValue) => {
+                //                 _parent[attr.value] = newValue;
+                //             };
+                //         }
+                //
+                //         // 整理data 中即将存储的 key名称
+                //         let dataKey = null;
+                //
+                //         // 特殊处理: 包含()的函数。这种函数不需要将其value值赋于data
+                //         // ex: @click="openDialog(row)"
+                //         if (attr.value.indexOf('(') !== -1) {
+                //             dataKey = attr.value.split('(')[0];
+                //         }
+                //         // ex: @click="openDialog"
+                //         else if (typeof attr.value === 'function') {
+                //             dataKey = attr.value;
+                //         }
+                //         // ex: v-model="currentInfo"
+                //         else if (attr.name === 'v-model') {
+                //             dataKey = attr.value;
+                //         }
+                //
+                //         // ex: v-bind:info="currentInfo"
+                //         // ex: :info="currentInfo"
+                //         else if (attr.name.split(':')[1]) {
+                //             dataKey = attr.value;
+                //         }
+                //
+                //         // 父域中并不存在时跳出
+                //         if (typeof _parent[dataKey] === 'undefined') {
+                //             return;
+                //         }
+                //
+                //         // 为data进行赋值
+                //         dataMap[dataKey] = _parent[dataKey];
+                //     });
+                // });
+                // TODO 研究下$createElement，应该类似于angular 的 $new
+                // new Vue({
+                //     el: el,
+                //     data: () => dataMap,
+                //     watch: watchMap,
+                //     template: el.outerHTML
+                // });
 
-                // vue data
+                // const CompVue=Vue.extend(_parent.$options);
+
+                // console.log(_parent.$data);
+                // console.log(new CompVue({
+                //     el: el,
+                //     // data: () => dataMap,
+                //     watch: watchMap,
+                //     template: el.outerHTML
+                // }));
+
+                // extend methods
+                const methodsMap = {};
+                for (let key in _parent.$options.methods) {
+                    methodsMap[key] = _parent.$options.methods[key].bind(_parent);
+                }
+
+                // extend data
                 const dataMap = {
                     row: item.row
                 };
+                Object.assign(dataMap, _parent.$data);
 
-                // v-model
-                const watchMap = {};
-
-                attrList.forEach(attributes => {
-                    [].forEach.call(attributes, attr => {
-                        // 属性名或属性值为空将跳出:
-                        if (!attr.name || !attr.value) {
-                            return;
-                        }
-
-                        // 属性名不满足以下形式将跳出:
-                        // 非v-model
-                        // 非bind或bind的简写形式
-                        // 非on或on的简写形式
-                        if (attr.name !== 'v-model'
-                            && attr.name !== 'v-bind' && !/:/g.test(attr.name)
-                            && attr.name !== 'v-on' && !/@/g.test(attr.name)) {
-                            return;
-                        }
-
-                        // 特定属性不允许变更
-                        if (attr.name === 'row') {
-                            console.warn('GridManager warn: Vue attribute row can not be defined!');
-                            return;
-                        }
-
-                        // 双向绑定, 监听数据
-                        if (attr.name === 'v-model') {
-                            watchMap[attr.value] = (newValue, oldValue) => {
-                                _parent[attr.value] = newValue;
-                            };
-                        }
-
-                        // 整理data 中即将存储的 key名称
-                        let dataKey = null;
-
-                        // 特殊处理: 包含()的函数。这种函数不需要将其value值赋于data
-                        // ex: @click="openDialog(row)"
-                        if (attr.value.indexOf('(') !== -1) {
-                            dataKey = attr.value.split('(')[0];
-                        }
-                        // ex: @click="openDialog"
-                        else if (typeof attr.value === 'function') {
-                            dataKey = attr.value;
-                        }
-                        // ex: v-model="currentInfo"
-                        else if (attr.name === 'v-model') {
-                            dataKey = attr.value;
-                        }
-
-                        // ex: v-bind:info="currentInfo"
-                        // ex: :info="currentInfo"
-                        else if (attr.name.split(':')[1]) {
-                            dataKey = attr.value;
-                        }
-
-                        // 父域中并不存在时跳出
-                        if (typeof _parent[dataKey] === 'undefined') {
-                            return;
-                        }
-
-                        // 为data进行赋值
-                        dataMap[dataKey] = _parent[dataKey];
-                    });
-                });
-                new Vue({
-                    el: el.firstChild,
+                console.log(new Vue({
+                    parent: _parent,
+                    el: el,
                     data: () => dataMap,
-                    watch: watchMap,
-                    template: el.innerHTML
-                });
+                    methods: methodsMap,
+                    // watch: watchMap,
+                    template: el.outerHTML
+                }));
             });
         };
 

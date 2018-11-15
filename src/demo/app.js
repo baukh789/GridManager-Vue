@@ -4,16 +4,6 @@ import GridManager from '../js/index';
 
 Vue.use(GridManager);
 
-// 常量: 搜索条件
-const TYPE_MAP = {
-    '1': 'HTML/CSS',
-    '2': 'nodeJS',
-    '3': 'javaScript',
-    '4': '前端鸡汤',
-    '5': 'PM Coffee',
-    '6': '前端框架',
-    '7': '前端相关'
-};
 
 // 模拟的一个promise请求
 const getBlogList = function(paramse) {
@@ -52,6 +42,20 @@ const app = new Vue({
             info: '',
             url: ''
         },
+
+        // 分类
+        TYPE_LIST : [
+            {value: '1', text: 'HTML/CSS'},
+            {value: '2', text: 'nodeJS'},
+            {value: '3', text: 'javaScript'},
+            {value: '4', text: '前端鸡汤'},
+            {value: '5', text: 'PM Coffee'},
+            {value: '6', text: '前端框架'},
+            {value: '7', text: '前端相关'}
+        ],
+
+        // github地址
+        github: 'https://github.com/baukh789',
 
         // 初始化按纽禁用标识
         initDisabled: true,
@@ -117,7 +121,7 @@ const app = new Vue({
                         titleNode.title = `点击阅读[${rowObject.title}]`;
                         titleNode.classList.add('plugin-action');
 
-                        return titleNode;
+                        return '<a class="plugin-action" target="_blank" :href="\'https://www.lovejavascript.com/#!zone/blog/content.html?id=\'+ row.id" :title="\'点击阅读\'+ row.title">{{row.title}}</a>';
                     }
                 }, {
                     key: 'type',
@@ -136,13 +140,16 @@ const app = new Vue({
                             {value: '6', text: '前端框架'},
                             {value: '7', text: '前端相关'}
                         ],
+
                         // 筛选选中项，字符串, 默认为''。 非必设项，选中的过滤条件将会覆盖query
                         selected: '3',
+
                         // 否为多选, 布尔值, 默认为false。非必设项
                         isMultiple: false
                     },
-                    template: function (type, rowObject) {
-                        return `<span>${TYPE_MAP[type]}</span>`;
+                    // 使用v-for、v-bind及简写形式
+                    template: function () {
+                        return '<select><option v-for="item in TYPE_LIST" v-bind:value="item.value" :selected="item.value === row.type.toString()">{{item.text}}</option></select>';
                     }
                 }, {
                     key: 'info',
@@ -156,7 +163,7 @@ const app = new Vue({
                     align: 'center',
                     text: '作者',
                     template: function (username) {
-                        return `<a class="plugin-action" href="https://github.com/baukh789" target="_blank" title="去看看${username}的github">${username}</a>`;
+                        return `<a class="plugin-action" v-bind:href="github" target="_blank" title="去看看${username}的github">${username}</a>`;
                     }
                 }, {
                     key: 'createDate',
@@ -183,8 +190,7 @@ const app = new Vue({
                     remind: 'the action',
                     align: 'center',
                     text: '<span style="color: red">操作</span>',
-                    useCompile: true,
-                    // 直接返回 htmlString
+                    // 使用@click
                     template: () => {
                         return '<span class="plugin-action" @click="delectRow(row)">删除</span>';
                     }
