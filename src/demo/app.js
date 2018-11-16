@@ -111,16 +111,8 @@ const app = new Vue({
                     align: 'left',
                     text: '标题',
                     sorting: '',
-                    // 使用函数返回 dom node
+                    // 使用函数返回 vue template
                     template: function (title, rowObject) {
-                        var titleNode = document.createElement('a');
-                        titleNode.setAttribute('href', `https://www.lovejavascript.com/#!zone/blog/content.html?id=${rowObject.id}`);
-                        titleNode.setAttribute('title', title);
-                        titleNode.setAttribute('target', '_blank');
-                        titleNode.innerText = title;
-                        titleNode.title = `点击阅读[${rowObject.title}]`;
-                        titleNode.classList.add('plugin-action');
-
                         return '<a class="plugin-action" target="_blank" :href="\'https://www.lovejavascript.com/#!zone/blog/content.html?id=\'+ row.id" :title="\'点击阅读\'+ row.title">{{row.title}}</a>';
                     }
                 }, {

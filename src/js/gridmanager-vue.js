@@ -155,14 +155,14 @@ export default {
                 };
                 Object.assign(dataMap, _parent.$data);
 
-                console.log(new Vue({
+                // create new vue
+                new Vue({
                     parent: _parent,
                     el: el,
                     data: () => dataMap,
                     methods: methodsMap,
-                    // watch: watchMap,
                     template: el.outerHTML
-                }));
+                })
             });
         };
 
