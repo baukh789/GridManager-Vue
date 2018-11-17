@@ -4,7 +4,6 @@ import GridManager from '../js/index';
 
 Vue.use(GridManager);
 
-
 // 模拟的一个promise请求
 const getBlogList = function(paramse) {
     return new Promise((resolve, reject) => {

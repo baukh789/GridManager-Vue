@@ -7,7 +7,7 @@
 [![coverage](https://img.shields.io/codecov/c/github/baukh789/GridManager.svg?style=flat-square)](https://codecov.io/gh/baukh789/GridManager)
 
 ## API
-> 该文档为GridManager的文档，除了`columnData`中存在差异外，其它使用方式相同。
+> 该文档为原生GridManager的文档，vue版本除了在`columnData.text` `columnData.template` `topFullColumn.template`中可以使用vue模版外，其它使用方式相同。
 - [API](http://gridmanager.lovejavascript.com/api/index.html)
 
 
@@ -19,23 +19,25 @@
 - [jTool](https://github.com/baukh789/jTool)
 
 ## 开发环境
-ES2015 + webpack + Vue + gridmanager
+ES2015 + webpack + Vue + GridManager
 
 ## 安装
 ```
 npm install gridmanager-vue --save
 ```
 
-## 使用
+## 项目中引用
 ### Vue全局组件
 ```javascript
 import GridManager from 'gridmanager-vue';
+import 'gridmanager-vue/css/gm-vue.css';
 Vue.use(GridManager);
 ```
 
 ### Vue局部组件
 ```javascript
 import GridManager from 'gridmanager-vue';
+import 'gridmanager-vue/css/gm-vue.css';
 
 new Vue({
     el: '#app',
@@ -124,10 +126,7 @@ gridOption = {
             width: '100px',
             align: 'center',
 
-            // tempalte中使用了vue模块，则必须将参数useCompile配置为true，否则vue模版将不会解析。
-            useCompile: true,
-
-            // template=> function: return vue template, 需配置useCompile=true
+            // template=> function: return vue template
             // vue模版中将自动添加row字段，该字段为当前行所使用的数据
             // vue模版将不允许再使用template函数中传入的参数
             template:() => {
@@ -172,7 +171,7 @@ gridOption = {
 this.$refs['grid'].$el.GM('refreshGrid');
 
 // 更新查询条件
-this.$refs['grid'].$el.GM('setQuery', this.searchForm);
+this.$refs['grid'].$el.GM('setQuery', {name: 'baukh'});
 
 // ...其它更多请直接访问API
 ```
