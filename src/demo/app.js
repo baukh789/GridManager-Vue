@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import './style.css';
 import GridManager from '../js/index';
+import '../skin/index';
 
 Vue.use(GridManager);
 
@@ -85,25 +86,10 @@ const app = new Vue({
                     width: '110px',
                     align: 'center',
                     text: '缩略图',
-                    // 使用函数返回 dom node
-                    template: function (pic, rowObject) {
-                        var picNode = document.createElement('a');
-                        picNode.setAttribute('href', `https://www.lovejavascript.com/#!zone/blog/content.html?id=${rowObject.id}`);
-                        picNode.setAttribute('title', rowObject.title);
-                        picNode.setAttribute('target', '_blank');
-                        picNode.title = `点击阅读[${rowObject.title}]`;
-                        picNode.style.display = 'block';
-                        picNode.style.height = '58.5px';
-
-                        var imgNode = document.createElement('img');
-                        imgNode.style.width = '90px';
-                        imgNode.style.margin = '0 auto';
-                        imgNode.alt = rowObject.title;
-                        imgNode.src = `https://www.lovejavascript.com/${pic}`;
-
-                        picNode.appendChild(imgNode);
-                        return picNode;
-                    }
+                    // vue template
+                    template: `<a target="_blank" style="display:block; height:58.5px;" :href="\'https://www.lovejavascript.com/#!zone/blog/content.html?id=\'+row.id" :title="\'点击阅读[\'+ row.title + \']\'">
+                                <img style="width:90px;margin:0 auto;" :src="\'https://www.lovejavascript.com/\'+row.pic" :alt="row.title">
+                            </a>`
                 }, {
                     key: 'title',
                     remind: 'the title',
@@ -111,8 +97,8 @@ const app = new Vue({
                     text: '标题',
                     sorting: '',
                     // 使用函数返回 vue template
-                    template: function (title, rowObject) {
-                        return '<a class="plugin-action" target="_blank" :href="\'https://www.lovejavascript.com/#!zone/blog/content.html?id=\'+ row.id" :title="\'点击阅读\'+ row.title">{{row.title}}</a>';
+                    template: function() {
+                        return '<a class="plugin-action" target="_blank" :href="\'https://www.lovejavascript.com/#!zone/blog/content.html?id=\'+ row.id" :title="\'点击阅读[\'+ row.title +\']\'">{{row.title}}</a>';
                     }
                 }, {
                     key: 'type',
@@ -139,9 +125,7 @@ const app = new Vue({
                         isMultiple: false
                     },
                     // 使用v-for、v-bind及简写形式
-                    template: function () {
-                        return '<select><option v-for="item in TYPE_LIST" v-bind:value="item.value" :selected="item.value === row.type.toString()">{{item.text}}</option></select>';
-                    }
+                    template: '<select><option v-for="item in TYPE_LIST" v-bind:value="item.value" :selected="item.value === row.type.toString()">{{item.text}}</option></select>'
                 }, {
                     key: 'info',
                     text: '简介',
@@ -153,9 +137,7 @@ const app = new Vue({
                     width: '100px',
                     align: 'center',
                     text: '作者',
-                    template: function (username) {
-                        return `<a class="plugin-action" v-bind:href="github" target="_blank" title="去看看${username}的github">${username}</a>`;
-                    }
+                    template: `<a class="plugin-action" v-bind:href="github" target="_blank" :title="\'去看看的\'+ row.username + \'github\'">{{row.username}}</a>`
                 }, {
                     key: 'createDate',
                     remind: 'the createDate',
@@ -183,7 +165,7 @@ const app = new Vue({
                     text: '<span style="color: red">操作</span>',
                     // 使用@click
                     template: () => {
-                        return '<span class="plugin-action" @click="delectRow(row)">删除</span>';
+                        return '<span class="plugin-action" @click="delectRow(row, index)">删除</span>';
                     }
                 }
             ],
@@ -195,8 +177,8 @@ const app = new Vue({
     },
     methods: {
         // 测试vue下的GM事件
-        delectRow: function (row) {
-            if (window.confirm('确认要删除[' + row.title + ']?')) {
+        delectRow: function (row, index) {
+            if(window.confirm(`确认要删除当前页第[${index}]条的['${row.title}]?`)){
                 console.log('----删除操作开始----');
                 this.$refs['grid'].$el.GM('refreshGrid');
                 console.log('数据没变是正常的, 因为这只是个示例,并不会真实删除数据.');

@@ -18,7 +18,6 @@ export default {
     mounted() {
         const _parent = this.$parent;
 
-        console.log(_parent);
         // 包装ajax_success
         const ajax_success = this.option.ajax_success;
         this.option.ajax_success = (respones) => {
@@ -151,7 +150,8 @@ export default {
 
                 // extend data
                 const dataMap = {
-                    row: item.row
+                    row: item.row,
+                    index: item.index
                 };
                 Object.assign(dataMap, _parent.$data);
 
