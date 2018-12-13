@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import './style.css';
 import GridManager from '../js/index';
-import '../skin/index';
+// import '../skin/index';
 
 Vue.use(GridManager);
 

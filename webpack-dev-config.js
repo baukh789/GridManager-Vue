@@ -1,6 +1,9 @@
 const path = require('path');
+const webpack = require('webpack');
 const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin');
 const genRules = require('./webpack-common.loader');
+const { version } = require('./package.json');
+
 const config = {
 	// map
 	devtool : 'source-map',  // TODO  http://www.css88.com/doc/webpack2/configuration/devtool/
@@ -51,7 +54,14 @@ const config = {
             filename: 'css/app.css',
             disable: false,
             allChunks: true
-        })
+        }),
+
+        // 配置环境变量
+        new webpack.DefinePlugin({
+            'process.env': {
+                VERSION: JSON.stringify(version),
+            }
+        }),
     ],
 
 	// 处理项目中的不同类型的模块

@@ -1,7 +1,6 @@
 /**
  * Created by baukh on 18/3/8.
  */
-import { version } from '../../package.json';
 import GridManagerVue from './gridmanager-vue';
 
 // Vue install, Vue.use 会调用该方法。
@@ -15,7 +14,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 // GridManagerVue 的版本号。 需要注意的是: 这仅仅是vue环境的壳, 验证功能需要查看GridManager的版本号
-GridManagerVue.version = version;
+GridManagerVue.version = process.env.VERSION;
 
 export default GridManagerVue;
 
