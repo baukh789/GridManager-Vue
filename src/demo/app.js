@@ -63,6 +63,12 @@ const app = new Vue({
         // 销毁按纽禁用标识
         destroyDisabled: true,
 
+        // 表格渲染回调函数
+        // query为gmOptions中配置的query
+        callback: function(query) {
+            console.log('callback => ', query);
+        },
+
         // GM所需参数
         option: {
             supportRemind: true,

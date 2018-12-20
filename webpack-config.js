@@ -72,7 +72,7 @@ const config = {
         // 配置环境变量
         new webpack.DefinePlugin({
             'process.env': {
-                VERSION: JSON.stringify(version),
+                VERSION: JSON.stringify(version)
             }
         }),
 
