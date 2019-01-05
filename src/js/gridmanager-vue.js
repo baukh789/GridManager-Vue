@@ -78,7 +78,7 @@ export default {
         };
 
         this.$el.GridManager('init', this.option, query => {
-            this.callback(query);
+            typeof(this.callback) === 'function' && this.callback(query);
 
             // 当前this指向的是 gridmanager
             // _parent 指向的是调用 gridmanager 的 components
@@ -87,17 +87,28 @@ export default {
         });
     },
 
+    /**
+     * 创建前事件
+     */
     beforeCreate() {
     },
     created() {
     },
     updated() {
     },
+
+    /**
+     * 消毁事件
+     */
     destroyed() {
         // 清除右键菜单
         const menuDomList = document.querySelectorAll('.grid-menu[grid-master]');
         [].forEach.call(menuDomList, menuDom => {
             menuDom.parentNode.removeChild(menuDom);
         });
+
+        // 销毁实例
+        GridManager.destroy(this.$el);
     }
-}
+};
+

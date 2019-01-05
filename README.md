@@ -29,20 +29,20 @@ npm install gridmanager-vue --save
 ## 项目中引用
 ### Vue全局组件
 ```javascript
-import GridManager from 'gridmanager-vue';
+import GridManagerVue from 'gridmanager-vue';
 import 'gridmanager-vue/css/gm-vue.css';
-Vue.use(GridManager);
+Vue.use(GridManagerVue);
 ```
 
 ### Vue局部组件
 ```javascript
-import GridManager from 'gridmanager-vue';
+import GridManagerVue from 'gridmanager-vue';
 import 'gridmanager-vue/css/gm-vue.css';
 
 new Vue({
     el: '#app',
     components: {
-        GridManager
+        GridManagerVue
     }
 });
 ```
@@ -182,14 +182,14 @@ const app = new Vue({
 如果需要将this指向vue, 可以通过将`GridManager`的配置项写在created内来实现。
 
 ### 调用公开方法
-> GM对象挂在Element.prototype上，这里是通过vue方式获取table dom。无论通过哪种方式，只要获取到table dom就可通过GM函数调用方法。
+> 以下方法需要在已经存在gridManager实例的Vue环境下使用。
 
 ```javascript
 // 刷新
-this.$refs['grid'].$el.GM('refreshGrid');
+this.$gridManager.refreshGrid('test-gm');
 
 // 更新查询条件
-this.$refs['grid'].$el.GM('setQuery', {name: 'baukh'});
+this.$gridManager.setQuery('test-gm', {name: 'baukh'});
 
 // ...其它更多请直接访问API
 ```
@@ -197,6 +197,6 @@ this.$refs['grid'].$el.GM('setQuery', {name: 'baukh'});
 ### 查看当前版本
 
 ```javascript
-import GridManager from 'gridmanager-vue';
-console.log('GridManager', GridManager.version);
+import GridManagerVue from 'gridmanager-vue';
+console.log(GridManagerVue.version);
 ```

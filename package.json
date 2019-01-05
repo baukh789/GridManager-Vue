@@ -13,6 +13,7 @@
     },
     "author": "baukh",
     "license": "MIT",
+    "homepage": "http://gridmanager.lovejavascript.com",
     "bugs": {
         "url": "https://github.com/baukh789/GridManager-Vue/issues"
     },
@@ -41,7 +42,6 @@
         "webpack": "2.7.0",
         "webpack-dev-middleware": "^2.0.4"
     },
-    "homepage": "https://github.com/baukh789/GridManager-Angular-1.x#readme",
     "dependencies": {
         "gridmanager": "^2.6.12",
         "vue": "^2.5.2"
