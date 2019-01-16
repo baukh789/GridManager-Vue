@@ -38,9 +38,8 @@ const app = new Vue({
     data: {
         // 表单数据
         formData: {
-            name: '',
-            info: '',
-            url: ''
+            title: '',
+            content: ''
         },
 
         // 分类
@@ -168,6 +167,7 @@ const app = new Vue({
                     key: 'action',
                     remind: 'the action',
                     align: 'center',
+                    width: '100px',
                     text: '<span style="color: red">操作</span>',
                     // 使用@click
                     template: () => {
@@ -203,9 +203,8 @@ const app = new Vue({
 
         // 事件: 重置
         onReset: function () {
-            this.formData.name = '';
-            this.formData.info = '';
-            this.formData.url = '';
+            this.formData.title = '';
+            this.formData.content = '';
         },
 
         // 事件: 初始化

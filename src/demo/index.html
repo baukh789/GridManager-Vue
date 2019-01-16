@@ -16,15 +16,11 @@
     <section class="search-area">
         <div class="sa-ele">
             <label class="se-title">名称:</label>
-            <input class="se-con" v-model="formData.name"/>
+            <input class="se-con" v-model="formData.title"/>
         </div>
         <div class="sa-ele">
-            <label class="se-title">使用说明:</label>
-            <input class="se-con" v-model="formData.info"/>
-        </div>
-        <div class="sa-ele">
-            <label class="se-title">url:</label>
-            <input class="se-con" v-model="formData.url"/>
+            <label class="se-title">内容:</label>
+            <input class="se-con" v-model="formData.content"/>
         </div>
         <div class="sa-ele">
             <button class="search-action" @click="onSearch()">搜索</button>
