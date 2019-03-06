@@ -84,6 +84,15 @@ const app = new Vue({
             supportMenu: true,
             query: {test: 22},
             pageSize: 30,
+
+            // 顶部通栏
+            // topFullColumn: {
+            //     template: function(){
+            //         return `<div style="padding: 12px; text-align: center;">
+            //                     {{row.title}}快速、灵活的对Table标签进行实例化，让Table标签充满活力。该项目已开源, <a target="_blank" href="https://github.com/baukh789/GridManager">点击进入</a>github
+            //                 </div>`;
+            //     }
+            // },
             columnData: [
                 {
                     key: 'pic',

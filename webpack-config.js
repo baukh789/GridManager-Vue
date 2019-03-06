@@ -16,6 +16,15 @@ const config = {
 		js: './js/index.js'
 	},
 
+    // 文件导出的配置
+    // http://www.css88.com/doc/webpack2/configuration/output/
+    output:{
+        path: buildPath ,
+        filename: "js/gm-vue.js",
+        library: 'GridManager',
+        libraryTarget: "umd"
+    },
+
 	// 配置模块如何解析
 	resolve:{
         alias: {
@@ -38,15 +47,6 @@ const config = {
             amd: 'vue'
         }
     },
-
-	// 文件导出的配置
-    // http://www.css88.com/doc/webpack2/configuration/output/
-	output:{
-		path: buildPath ,
-		filename: "js/gm-vue.js",
-        library: 'GridManager',
-        libraryTarget: "umd"
-	},
 
 	// 以插件形式定制webpack构建过程
 	plugins: [

@@ -6,7 +6,7 @@ const { version } = require('./package.json');
 
 const config = {
 	// map
-	devtool : 'source-map',  // TODO  http://www.css88.com/doc/webpack2/configuration/devtool/
+	devtool : 'source-map',  // http://www.css88.com/doc/webpack2/configuration/devtool/
 
 	// 入口文件配置
 	context: path.join(__dirname, "src/"),
@@ -15,6 +15,14 @@ const config = {
 	entry: {
 		js: './demo/app.js'
 	},
+
+    // 文件导出的配置
+    output:{
+        // path: '/' ,
+        filename: "webpack-dev-file/js/app.js",
+        // publicPath 对于热替换（HMR）是必须的，让webpack知道在哪里载入热更新的模块（chunk）
+        publicPath: "/"
+    },
 
 	// 配置模块如何解析
 	resolve:{
@@ -39,19 +47,12 @@ const config = {
     //     }
     // },
 
-	// 文件导出的配置
-	output:{
-		// path: '/' ,
-		filename: "js/app.js",
-		// publicPath 对于热替换（HMR）是必须的，让webpack知道在哪里载入热更新的模块（chunk）
-		publicPath: "/"
-	},
 
     // 以插件形式定制webpack构建过程
     plugins: [
         // 将样式文件 抽取至独立文件内
         new ExtractTextWebpackPlugin({
-            filename: 'css/app.css',
+            filename: 'webpack-dev-file/css/app.css',
             disable: false,
             allChunks: true
         }),
