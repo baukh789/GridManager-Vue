@@ -4,7 +4,6 @@ import GridManager from '../js/index';
 // import '../skin/index';
 
 Vue.use(GridManager);
-
 // 模拟的一个promise请求
 const getBlogList = function(paramse) {
     return new Promise((resolve, reject) => {
@@ -72,11 +71,11 @@ const app = new Vue({
         option: {
             supportRemind: true,
             gridManagerName: 'test',
+            width: '100%',
             height: '400px',
             supportAjaxPage: true,
             supportSorting: true,
             isCombSorting: false,
-            disableCache: false,
             ajax_data: (settings, parsme) => {
                 return getBlogList(parsme);
             },
@@ -117,7 +116,7 @@ const app = new Vue({
                 }, {
                     key: 'type',
                     text: '博文分类',
-                    width: '120',
+                    width: '150px',
                     align: 'center',
                     // 表头筛选条件, 该值由用户操作后会将选中的值以{key: value}的形式覆盖至query参数内。非必设项
                     filter: {
@@ -132,7 +131,7 @@ const app = new Vue({
                             {value: '7', text: '前端相关'}
                         ],
 
-                        // 筛选选中项，字符串, 默认为''。 非必设项，选中的过滤条件将会覆盖query
+                        // 筛选选中项，字符串, 未存在选中项时设置为''。 在此设置的选中的过滤条件将会覆盖query
                         selected: '3',
 
                         // 否为多选, 布尔值, 默认为false。非必设项
@@ -143,8 +142,7 @@ const app = new Vue({
                 }, {
                     key: 'info',
                     text: '简介',
-                    width: '100px',
-                    isShow: false
+                    width: '300px'
                 }, {
                     key: 'username',
                     remind: 'the username',
@@ -155,7 +153,7 @@ const app = new Vue({
                 }, {
                     key: 'createDate',
                     remind: 'the createDate',
-                    width: '100px',
+                    width: '130px',
                     text: '创建时间',
                     sorting: 'DESC',
                     // 使用函数返回 htmlString
@@ -165,7 +163,7 @@ const app = new Vue({
                 }, {
                     key: 'lastDate',
                     remind: 'the lastDate',
-                    width: '100px',
+                    width: '130px',
                     text: '最后修改时间',
                     sorting: '',
                     // 使用函数返回 htmlString
