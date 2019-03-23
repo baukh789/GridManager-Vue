@@ -1,6 +1,6 @@
 {
     "name": "gridmanager-vue",
-    "version": "1.0.19",
+    "version": "1.0.20",
     "description": "gridmanager by vue",
     "main": "js/gm-vue.js",
     "scripts": {
@@ -40,10 +40,10 @@
         "express": "^4.16.3",
         "extract-text-webpack-plugin": "2.1.2",
         "webpack": "2.7.0",
-        "webpack-dev-middleware": "^2.0.4"
+        "webpack-dev-middleware": "^2.0.4",
+        "gridmanager": "^2.7.7"
     },
     "dependencies": {
-        "gridmanager": "^2.7.6",
         "vue": "^2.5.2"
     }
 }
