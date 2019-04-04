@@ -198,14 +198,15 @@ const app = new Vue({
 如果需要将this指向vue, 可以通过将`GridManager`的配置项写在created内来实现。
 
 ### 调用公开方法
-> 以下方法需要在已经存在gridManager实例的Vue环境下使用。
+> 以下方法需要在已经存在gridManager实例的Vue环境下使用。并且使用`this.$gridManager`服务需要提前通过`Vue.use(GridManagerVue)`将`GridManagerVue`注册至全局组件。
 
 ```javascript
+// 推荐使用this.$gridManager方式进行方法调用。
 // 刷新
-this.$gridManager.refreshGrid('test-gm');
+this.$gridManager.refreshGrid('test-gm');  // 或 this.$refs['grid'].$el.GM('refreshGrid', 'test-gm');
 
 // 更新查询条件
-this.$gridManager.setQuery('test-gm', {name: 'baukh'});
+this.$gridManager.setQuery('test-gm', {name: 'baukh'});  // 或 this.$refs['grid'].$el.GM('setQuery', 'test-gm', {name: 'baukh'});
 
 // ...其它更多请直接访问API
 ```

@@ -32,6 +32,7 @@ const getBlogList = function(paramse) {
         xhr.send(formData);
     });
 };
+
 const app = new Vue({
     el: '#app',
     data: {
@@ -201,10 +202,11 @@ const app = new Vue({
         },
 
         // 事件: 搜索
-        onSearch: function () {
+        onSearch() {
             var params = Object.assign({cPage: 1}, this.formData);
-            this.$refs['grid'].$el.GM('setQuery', params, function () {
-                console.log('setQuery执行成功');
+            console.log(this);
+            this.$gridManager.setQuery('test', params, function () {
+                console.log('setQuery=>执行成功222');
             });
         },
 
@@ -223,7 +225,7 @@ const app = new Vue({
 
         // 事件: 销毁
         onDestroy: function () {
-            this.$refs['grid'].$el.GM('destroy');
+            this.$gridManager.destroy('test');
             this.initDisabled = false;
             this.destroyDisabled = true;
         }
