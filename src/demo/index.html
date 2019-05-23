@@ -28,12 +28,15 @@
         </div>
     </section>
     <section class="grid-main">
-        <grid-manager v-bind:option="option" :callback="callback" ref="grid"></grid-manager>
+        <div v-if="!destroyDisabled">
+            <grid-manager v-bind:option="option" :callback="callback" ref="grid"></grid-manager>
+        </div>
     </section>
 
     <section class="bottom-bar">
-        <button id="init-gm" @click="onInit()" v-bind:disabled="initDisabled">init</button>
-        <button id="destroy-gm" @click="onDestroy()" v-bind:disabled="destroyDisabled">destroy</button>
+        <button @click="onInit()" v-bind:disabled="initDisabled">init</button>
+        <button @click="onDestroy()" v-bind:disabled="destroyDisabled">destroy</button>
+        <a href="https://github.com/baukh789/GridManager-Vue" target="_blank">查看源码</a>
     </section>
 </div>
 <script src="/webpack-dev-file/js/app.js"></script>

@@ -204,7 +204,6 @@ const app = new Vue({
         // 事件: 搜索
         onSearch() {
             var params = Object.assign({cPage: 1}, this.formData);
-            console.log(this);
             this.$gridManager.setQuery('test', params, function () {
                 console.log('setQuery=>执行成功222');
             });
@@ -218,14 +217,12 @@ const app = new Vue({
 
         // 事件: 初始化
         onInit: function () {
-            this.$refs['grid'].$el.GM('init', this.option);
-            this.initDisabled = true;
             this.destroyDisabled = false;
+            this.initDisabled = true;
         },
 
         // 事件: 销毁
         onDestroy: function () {
-            this.$gridManager.destroy('test');
             this.initDisabled = false;
             this.destroyDisabled = true;
         }

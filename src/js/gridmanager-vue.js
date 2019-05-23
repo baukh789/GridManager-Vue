@@ -101,14 +101,15 @@ export default {
      * 消毁事件
      */
     destroyed() {
+        const gridManagerName = this.option.gridManagerName;
         // 清除右键菜单
-        const menuDomList = document.querySelectorAll('.grid-menu[grid-master]');
+        const menuDomList = document.querySelectorAll(`.grid-menu[grid-master="${gridManagerName}"]`);
         [].forEach.call(menuDomList, menuDom => {
             menuDom.parentNode.removeChild(menuDom);
         });
 
         // 销毁实例
-        GridManager.destroy(this.$el);
+        GridManager.destroy(gridManagerName);
     }
 };
 
