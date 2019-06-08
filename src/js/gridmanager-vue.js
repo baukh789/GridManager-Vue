@@ -39,7 +39,6 @@ export default {
                 compileList.forEach(item => {
                     const el = item.el;
                     const attrList = [];
-
                     // 递归存储attributes
                     function getAllChildren(childNodes) {
                         childNodes.length > 0 && [].forEach.call(childNodes, ele => {
@@ -71,9 +70,8 @@ export default {
                         methods: methodsMap,
                         template: el.outerHTML
                     });
-
-                    resolve();
                 });
+                resolve();
             });
         };
 
@@ -85,16 +83,6 @@ export default {
             // GM.setScope 中需要传入的是当前实例化的table和所在域。而这域应该是_parent
             GridManager.setScope(this.$el, _parent);
         });
-    },
-
-    /**
-     * 创建前事件
-     */
-    beforeCreate() {
-    },
-    created() {
-    },
-    updated() {
     },
 
     /**

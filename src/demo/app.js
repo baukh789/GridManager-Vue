@@ -56,12 +56,6 @@ const app = new Vue({
         // github地址
         github: 'https://github.com/baukh789',
 
-        // 初始化按纽禁用标识
-        initDisabled: true,
-
-        // 销毁按纽禁用标识
-        destroyDisabled: true,
-
         // 表格渲染回调函数
         // query为gmOptions中配置的query
         callback: function(query) {
@@ -72,8 +66,7 @@ const app = new Vue({
         option: {
             supportRemind: true,
             gridManagerName: 'test',
-            width: '100%',
-            height: '400px',
+            height: '100%',
             supportAjaxPage: true,
             supportSorting: true,
             isCombSorting: false,
@@ -176,7 +169,8 @@ const app = new Vue({
                     remind: 'the action',
                     align: 'center',
                     width: '100px',
-                    text: '<span style="color: red">操作</span>',
+                    disableCustomize: true,
+                    text: '<span style="color: red;" @click="actionAlert()">操作</span>',
                     // 使用@click
                     template: () => {
                         return '<span class="plugin-action" @click="delectRow(row, index)">删除</span>';
@@ -200,7 +194,10 @@ const app = new Vue({
                 console.log('');
             }
         },
-
+        // 事件: 操作
+        actionAlert: function() {
+            alert('操作栏th是由vue模板渲染的');
+        },
         // 事件: 搜索
         onSearch() {
             var params = Object.assign({cPage: 1}, this.formData);
@@ -218,19 +215,16 @@ const app = new Vue({
         // 事件: 初始化
         onInit: function () {
             this.destroyDisabled = false;
-            this.initDisabled = true;
         },
 
         // 事件: 销毁
         onDestroy: function () {
-            this.initDisabled = false;
             this.destroyDisabled = true;
         }
     },
 
     // 创建完成
     created: function () {
-        this.initDisabled = true;
         this.destroyDisabled = false;
     }
 });

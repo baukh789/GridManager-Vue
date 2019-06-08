@@ -6,13 +6,10 @@
     <link rel="stylesheet" type="text/css" href="/webpack-dev-file/css/app.css">
 
     <style>
-        .grid-main {
-            height: calc(100vh - 64px - 57px);
-        }
     </style>
 </head>
 <body>
-<div id="app">
+<div id="app" style="height: 100%">
     <section class="search-area">
         <div class="sa-ele">
             <label class="se-title">名称:</label>
@@ -28,14 +25,14 @@
         </div>
     </section>
     <section class="grid-main">
-        <div v-if="!destroyDisabled">
+        <div v-if="!destroyDisabled" style="height: 100%">
             <grid-manager v-bind:option="option" :callback="callback" ref="grid"></grid-manager>
         </div>
     </section>
 
     <section class="bottom-bar">
-        <button @click="onInit()" v-bind:disabled="initDisabled">init</button>
-        <button @click="onDestroy()" v-bind:disabled="destroyDisabled">destroy</button>
+        <button @click="onInit()">init</button>
+        <button @click="onDestroy()">destroy</button>
         <a href="https://github.com/baukh789/GridManager-Vue" target="_blank">查看源码</a>
     </section>
 </div>
