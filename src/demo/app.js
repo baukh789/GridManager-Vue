@@ -1,9 +1,9 @@
 import Vue from 'vue';
 import './style.css';
-import GridManager from '../js/index';
+import GridManagerVue, { $gridManager } from '../js/index';
 // import '../skin/index';
 
-Vue.use(GridManager);
+Vue.use(GridManagerVue);
 // 模拟的一个promise请求
 const getBlogList = function(paramse) {
     return new Promise((resolve, reject) => {
@@ -62,6 +62,9 @@ const app = new Vue({
             console.log('callback => ', query);
         },
 
+        // 空文本
+        emptyText: '这个Vue表格, 什么数据也没有',
+
         // GM所需参数
         option: {
             supportRemind: true,
@@ -77,7 +80,7 @@ const app = new Vue({
             supportMenu: true,
             query: {test: 22},
             pageSize: 30,
-
+            emptyTemplate: '<section style="text-align: center">{{emptyText}}</section>',
             // 顶部通栏
             // topFullColumn: {
             //     template: function(){
@@ -201,7 +204,7 @@ const app = new Vue({
         // 事件: 搜索
         onSearch() {
             var params = Object.assign({cPage: 1}, this.formData);
-            this.$gridManager.setQuery('test', params, function () {
+            $gridManager.setQuery('test', params, function () {
                 console.log('setQuery=>执行成功222');
             });
         },

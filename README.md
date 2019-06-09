@@ -43,6 +43,17 @@ npm install gridmanager-vue --save
 ```
 
 ## 项目中引用
+- es2015引入方式
+```javascript
+import GridManagerReact, {$gridManager} from 'gridmanager-react';
+import 'gridmanager-react/css/gm-react.css';
+```
+
+- 通过script标签引入
+```html
+<link rel="stylesheet" href="../node_modules/gridmanager-react/css/gm-react.css">
+<script src="../node_modules/gridmanager-react/js/gm-react.js"></script>
+```
 ### Vue全局组件
 ```javascript
 import GridManagerVue from 'gridmanager-vue';
@@ -198,15 +209,16 @@ const app = new Vue({
 如果需要将this指向vue, 可以通过将`GridManager`的配置项写在created内来实现。
 
 ### 调用公开方法
-> 以下方法需要在已经存在gridManager实例的Vue环境下使用。并且使用`this.$gridManager`服务需要提前通过`Vue.use(GridManagerVue)`将`GridManagerVue`注册至全局组件。
+> 通过ES6语法，将$gridManager引入。如果使用`this.$gridManager`服务需要提前通过`Vue.use(GridManagerVue)`将`GridManagerVue`注册至全局组件。
 
 ```javascript
-// 推荐使用this.$gridManager方式进行方法调用。
+import GridManagerVue, { $gridManager } from 'gridmanager-vue';
+Vue.use(GridManagerVue);
 // 刷新
-this.$gridManager.refreshGrid('test-gm');  // 或 this.$refs['grid'].$el.GM('refreshGrid', 'test-gm');
+$gridManager.refreshGrid('test-gm');  // 或 this.$gridManager.refreshGrid('test-gm');
 
 // 更新查询条件
-this.$gridManager.setQuery('test-gm', {name: 'baukh'});  // 或 this.$refs['grid'].$el.GM('setQuery', 'test-gm', {name: 'baukh'});
+$gridManager.setQuery('test-gm', {name: 'baukh'});  // 或 this.$gridManager.setQuery('test-gm', {name: 'baukh'});
 
 // ...其它更多请直接访问API
 ```
@@ -214,6 +226,7 @@ this.$gridManager.setQuery('test-gm', {name: 'baukh'});  // 或 this.$refs['grid
 ### 查看当前版本
 
 ```javascript
-import GridManagerVue from 'gridmanager-vue';
-console.log(GridManagerVue.version);
+import GridManagerVue, {$gridManager} from 'gridmanager-vue';
+console.log('GridManagerVue 的版本=>', GridManagerVue.version);
+console.log('GridManager 的版本=>', $gridManager.version);
 ```

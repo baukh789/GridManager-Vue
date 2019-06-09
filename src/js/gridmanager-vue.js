@@ -1,7 +1,8 @@
 import Vue from 'vue';
 import 'gridmanager/css/gm.css';
 import GridManager from 'gridmanager';
-
+const $gridManager = GridManager;
+export { $gridManager };
 export default {
     name: 'GridManagerVue',
     props: {
@@ -75,13 +76,13 @@ export default {
             });
         };
 
-        this.$el.GridManager('init', this.option, query => {
+        this.$el.GM(this.option, query => {
             typeof(this.callback) === 'function' && this.callback(query);
 
             // 当前this指向的是 gridmanager
             // _parent 指向的是调用 gridmanager 的 components
             // GM.setScope 中需要传入的是当前实例化的table和所在域。而这域应该是_parent
-            GridManager.setScope(this.$el, _parent);
+            $gridManager.setScope(this.$el, _parent);
         });
     },
 
@@ -97,7 +98,7 @@ export default {
         });
 
         // 销毁实例
-        GridManager.destroy(gridManagerName);
+        $gridManager.destroy(gridManagerName);
     }
 };
 
