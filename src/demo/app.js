@@ -65,6 +65,16 @@ const app = new Vue({
         // 空文本
         emptyText: '这个Vue表格, 什么数据也没有',
 
+        // 类型
+        TYPE_MAP: {
+            '1': 'HTML/CSS',
+            '2': 'nodeJS',
+            '3': 'javaScript',
+            '4': '前端鸡汤',
+            '5': 'PM Coffee',
+            '6': '前端框架',
+            '7': '前端相关'
+        },
         // GM所需参数
         option: {
             supportRemind: true,
@@ -105,7 +115,6 @@ const app = new Vue({
                     remind: 'the title',
                     align: 'left',
                     text: '标题',
-                    sorting: '',
                     // 使用函数返回 vue template
                     template: function() {
                         return '<a class="plugin-action" target="_blank" :href="\'https://www.lovejavascript.com/#!zone/blog/content.html?id=\'+ row.id" :title="\'点击阅读[\'+ row.title +\']\'">{{row.title}}</a>';
@@ -135,11 +144,10 @@ const app = new Vue({
                         isMultiple: false
                     },
                     // 使用v-for、v-bind及简写形式
-                    template: '<select><option v-for="item in TYPE_LIST" v-bind:value="item.value" :selected="item.value === row.type.toString()">{{item.text}}</option></select>'
+                    template: '<button type="button" @click="testClick(row)">{{TYPE_MAP[row.type]}}</button>'
                 }, {
                     key: 'info',
                     text: '简介',
-                    width: '300px'
                 }, {
                     key: 'username',
                     remind: 'the username',
@@ -175,7 +183,7 @@ const app = new Vue({
                     disableCustomize: true,
                     text: '<span style="color: red;" @click="actionAlert()">操作</span>',
                     // 使用@click
-                    template: () => {
+                    template: (action, row, index) => {
                         return '<span class="plugin-action" @click="delectRow(row, index)">删除</span>';
                     }
                 }
@@ -187,6 +195,11 @@ const app = new Vue({
         }
     },
     methods: {
+        // 测试click
+        testClick: (row) => {
+            console.log('click', row);
+        },
+
         // 测试vue下的GM事件
         delectRow: function (row, index) {
             if(window.confirm(`确认要删除当前页第[${index}]条的['${row.title}]?`)){
