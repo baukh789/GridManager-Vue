@@ -5,7 +5,9 @@
     "main": "js/gm-vue.js",
     "scripts": {
         "start": "node server",
-        "build": "webpack --config webpack-config.js"
+        "build": "webpack --config webpack-config.js",
+        "version": "npm run build && npm publish dist",
+        "postversion": "git push && git push --tags"
     },
     "repository": {
         "type": "git",
