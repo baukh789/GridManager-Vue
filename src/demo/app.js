@@ -83,10 +83,10 @@ const app = new Vue({
             supportAjaxPage: true,
             supportSorting: true,
             isCombSorting: false,
-            ajax_data: (settings, parsme) => {
+            ajaxData: (settings, parsme) => {
                 return getBlogList(parsme);
             },
-            ajax_type: 'POST',
+            ajaxType: 'POST',
             supportMenu: true,
             query: {test: 22},
             pageSize: 30,

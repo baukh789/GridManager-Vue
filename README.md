@@ -175,12 +175,12 @@ const app = new Vue({
             supportAjaxPage: true,
 
             // 数据来源，类型: string url || data || function return[promise || string url || data]
-            ajax_data: (settings, params) => {
+            ajaxData: (settings, params) => {
                 return tenantRelateShop(params);
             },
 
             // 请求失败后事件
-            ajax_error: err => {
+            ajaxError: err => {
                 console.log(err);
             },
 

@@ -19,18 +19,18 @@ export default {
     mounted() {
         const _parent = this.$parent;
 
-        // 包装ajax_success
-        const ajax_success = this.option.ajax_success;
-        this.option.ajax_success = (respones) => {
+        // 包装ajaxSuccess
+        const ajaxSuccess = this.option.ajaxSuccess;
+        this.option.ajaxSuccess = (respones) => {
             // this.gmData = respones;
-            ajax_success && ajax_success.call(_parent, respones);
+            ajaxSuccess && ajaxSuccess.call(_parent, respones);
         };
 
         // 包装ajax_error
-        const ajax_error = this.option.ajax_error;
-        this.option.ajax_error = (error) => {
+        const ajaxError = this.option.ajaxError;
+        this.option.ajaxError = (error) => {
             // this.gmError = error;
-            ajax_error && ajax_error.call(_parent, error);
+            ajaxError && ajaxError.call(_parent, error);
         };
 
         // 解析Vue 模版, data中的row为固定元素
