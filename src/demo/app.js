@@ -124,6 +124,13 @@ const app = new Vue({
                     text: '博文分类',
                     width: '150px',
                     align: 'center',
+                    remind: {
+                        text: '[HTML/CSS, nodeJS, javaScript, 前端鸡汤, PM Coffee, 前端框架, 前端相关]',
+                        style: {
+                            width: '400px',
+                            'text-align': 'left'
+                        }
+                    },
                     // 表头筛选条件, 该值由用户操作后会将选中的值以{key: value}的形式覆盖至query参数内。非必设项
                     filter: {
                         // 筛选条件列表, 数组对象。格式: [{value: '1', text: 'HTML/CSS'}],在使用filter时该参数为必设项。
