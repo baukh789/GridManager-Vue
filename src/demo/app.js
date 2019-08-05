@@ -92,13 +92,13 @@ const app = new Vue({
             pageSize: 30,
             emptyTemplate: '<section style="text-align: center">{{emptyText}}</section>',
             // 顶部通栏
-            // topFullColumn: {
-            //     template: function(){
-            //         return `<div style="padding: 12px; text-align: center;">
-            //                     {{row.title}}快速、灵活的对Table标签进行实例化，让Table标签充满活力。该项目已开源, <a target="_blank" href="https://github.com/baukh789/GridManager">点击进入</a>github
-            //                 </div>`;
-            //     }
-            // },
+            topFullColumn: {
+                template: function(row, index){
+                    return `<div style="padding: 12px; text-align: center;">
+                                {{index}} - 快速、灵活的对Table标签进行实例化，让Table标签充满活力。该项目已开源, <a target="_blank" href="https://github.com/baukh789/GridManager">点击进入</a>github
+                            </div>`;
+                }
+            },
             columnData: [
                 {
                     key: 'pic',
@@ -191,7 +191,7 @@ const app = new Vue({
                     text: '<span style="color: red;" @click="actionAlert()">操作</span>',
                     // 使用@click
                     template: (action, row, index) => {
-                        return '<span class="plugin-action" @click="delectRow(row, index)">删除</span>';
+                        return '<span class="plugin-action" @click="editRow(row, index)">编辑</span>';
                     }
                 }
             ],
@@ -208,14 +208,9 @@ const app = new Vue({
         },
 
         // 测试vue下的GM事件
-        delectRow: function (row, index) {
-            if(window.confirm(`确认要删除当前页第[${index}]条的['${row.title}]?`)){
-                console.log('----删除操作开始----');
-                this.$refs['grid'].$el.GM('refreshGrid');
-                console.log('数据没变是正常的, 因为这只是个示例,并不会真实删除数据.');
-                console.log('----删除操作完成----');
-                console.log('');
-            }
+        editRow: function (row, index) {
+            row.title = row.title + ' (编辑于' + new Date().toLocaleDateString() +') ';
+            // $gridManager.updateRowData('test', 'id', row);
         },
         // 事件: 操作
         actionAlert: function() {
