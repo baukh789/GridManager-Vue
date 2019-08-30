@@ -1,7 +1,6 @@
 import Vue from 'vue';
 import './style.css';
 import GridManagerVue, { $gridManager } from '../js/index';
-// import '../skin/index';
 
 Vue.use(GridManagerVue);
 // 模拟的一个promise请求

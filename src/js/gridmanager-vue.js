@@ -1,8 +1,7 @@
 import Vue from 'vue';
+import $gridManager, { jTool } from 'gridmanager';
 import 'gridmanager/css/gm.css';
-import GridManager from 'gridmanager';
-const $gridManager = GridManager;
-export { $gridManager };
+export { $gridManager, jTool };
 export default {
     name: 'GridManagerVue',
     props: {
