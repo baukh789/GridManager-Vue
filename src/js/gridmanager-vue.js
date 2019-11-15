@@ -75,7 +75,7 @@ export default {
             });
         };
 
-        this.$el.GM(this.option, query => {
+        new $gridManager(this.$el, this.option, query => {
             typeof(this.callback) === 'function' && this.callback(query);
 
             // 当前this指向的是 gridmanager
