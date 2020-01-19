@@ -41,6 +41,9 @@ const app = new Vue({
             content: ''
         },
 
+        // 已销毁
+        destroyDisabled: true,
+
         // 分类
         TYPE_LIST : [
             {value: '1', text: 'HTML/CSS'},
