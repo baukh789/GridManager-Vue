@@ -18,20 +18,6 @@ export default {
     mounted() {
         const _parent = this.$parent;
 
-        // 包装ajaxSuccess
-        const ajaxSuccess = this.option.ajaxSuccess;
-        this.option.ajaxSuccess = (respones) => {
-            // this.gmData = respones;
-            ajaxSuccess && ajaxSuccess.call(_parent, respones);
-        };
-
-        // 包装ajax_error
-        const ajaxError = this.option.ajaxError;
-        this.option.ajaxError = (error) => {
-            // this.gmError = error;
-            ajaxError && ajaxError.call(_parent, error);
-        };
-
         // 解析Vue 模版, data中的row为固定元素
         // compileList格式为[{el: element, row: 行数据}]
         this.option.compileVue = compileList => {
@@ -77,11 +63,6 @@ export default {
 
         new $gridManager(this.$el, this.option, query => {
             typeof(this.callback) === 'function' && this.callback(query);
-
-            // 当前this指向的是 gridmanager
-            // _parent 指向的是调用 gridmanager 的 components
-            // GM.setScope 中需要传入的是当前实例化的table和所在域。而这域应该是_parent
-            $gridManager.setScope(this.$el, _parent);
         });
     },
 
