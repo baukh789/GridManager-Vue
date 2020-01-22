@@ -19,29 +19,18 @@ export default {
         const _parent = this.$parent;
 
         // 解析Vue 模版, data中的row为固定元素
-        // compileList格式为[{el: element, row: 行数据}]
         this.option.compileVue = compileList => {
             return new Promise(resolve => {
                 compileList.forEach(item => {
                     const el = item.el;
-                    const attrList = [];
-                    // 递归存储attributes
-                    function getAllChildren(childNodes) {
-                        childNodes.length > 0 && [].forEach.call(childNodes, ele => {
-                            ele.attributes && attrList.push(ele.attributes);
-                            ele.childNodes.length > 0 && getAllChildren(ele.childNodes);
-                        });
-                    }
 
-                    getAllChildren(el.childNodes);
-
-                    // extend methods
+                    // 继承父对像 methods: 用于通过this调用父对像的方法
                     const methodsMap = {};
                     for (let key in _parent.$options.methods) {
                         methodsMap[key] = _parent.$options.methods[key].bind(_parent);
                     }
 
-                    // extend data
+                    // 合并父对像 data
                     const dataMap = {
                         row: item.row,
                         index: item.index
@@ -61,6 +50,7 @@ export default {
             });
         };
 
+        // 调用原生组件进行实例化
         new $gridManager(this.$el, this.option, query => {
             typeof(this.callback) === 'function' && this.callback(query);
         });
