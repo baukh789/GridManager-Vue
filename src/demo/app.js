@@ -81,9 +81,10 @@ const app = new Vue({
             height: '100%',
             supportAjaxPage: true,
             supportSorting: true,
+            supportMoveRow: true,
             isCombSorting: false,
-            ajaxData: (settings, parsme) => {
-                return getBlogList(parsme);
+            ajaxData: (settings, params) => {
+                return getBlogList(params);
             },
             ajaxType: 'POST',
             supportMenu: true,
@@ -91,13 +92,13 @@ const app = new Vue({
             pageSize: 30,
             emptyTemplate: '<section style="text-align: center">{{emptyText}}</section>',
             // 顶部通栏
-            topFullColumn: {
-                template: function(row, index){
-                    return `<div style="padding: 12px; text-align: center;">
-                                {{index}} - 快速、灵活的对Table标签进行实例化，让Table标签充满活力。该项目已开源, <a target="_blank" href="https://github.com/baukh789/GridManager">点击进入</a>github
-                            </div>`;
-                }
-            },
+            // topFullColumn: {
+            //     template: function(row, index){
+            //         return `<div style="padding: 12px; text-align: center;">
+            //                     {{index}} - 快速、灵活的对Table标签进行实例化，让Table标签充满活力。该项目已开源, <a target="_blank" href="https://github.com/baukh789/GridManager">点击进入</a>github
+            //                 </div>`;
+            //     }
+            // },
             columnData: [
                 {
                     key: 'pic',
