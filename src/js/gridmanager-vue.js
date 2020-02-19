@@ -17,6 +17,7 @@ export default {
     template: '<table></table>',
     mounted() {
         const _parent = this.$parent;
+        const methods = _parent.$options.methods;
 
         // 包装ajaxSuccess
         const ajaxSuccess = this.option.ajaxSuccess;
@@ -35,6 +36,8 @@ export default {
         // 解析Vue 模版, data中的row为固定元素
         // compileList格式为[{el: element, row: 行数据}]
         this.option.compileVue = compileList => {
+            let attributes = null;
+            let children = null;
             return new Promise(resolve => {
                 compileList.forEach(item => {
                     const el = item.el;
@@ -42,8 +45,10 @@ export default {
                     // 递归存储attributes
                     function getAllChildren(childNodes) {
                         childNodes.length > 0 && [].forEach.call(childNodes, ele => {
-                            ele.attributes && attrList.push(ele.attributes);
-                            ele.childNodes.length > 0 && getAllChildren(ele.childNodes);
+                            attributes = ele.attributes;
+                            children = ele.childNodes;
+                            attributes && attrList.push(attributes);
+                            children.length > 0 && getAllChildren(children);
                         });
                     }
 
@@ -51,8 +56,8 @@ export default {
 
                     // extend methods
                     const methodsMap = {};
-                    for (let key in _parent.$options.methods) {
-                        methodsMap[key] = _parent.$options.methods[key].bind(_parent);
+                    for (let key in methods) {
+                        methodsMap[key] = methods[key].bind(_parent);
                     }
 
                     // extend data
