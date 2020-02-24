@@ -113,9 +113,6 @@ const app = new Vue({
             console.log('callback => ', Date.now() - now);
         },
 
-        // 空文本
-        emptyText: '这个Vue表格, 什么数据也没有',
-
         // 类型
         TYPE_MAP: {
             '1': 'HTML/CSS',
@@ -144,7 +141,10 @@ const app = new Vue({
             supportMenu: true,
             query: {test: 22},
             pageSize: 30,
-            emptyTemplate: '<section style="text-align: center">{{emptyText}}</section>',
+            emptyTemplate: settings => {
+                const emptyText = settings.query.title ? '搜索结果为空' : '这个Vue表格, 什么数据也没有';
+                return `<section style="text-align: center">${emptyText}</section>`;
+            },
             // 顶部通栏
             // topFullColumn: {
             //     template: function(row, index){
