@@ -272,7 +272,7 @@ const app = new Vue({
         },
         // 事件: 搜索
         onSearch() {
-            var params = Object.assign({cPage: 1}, this.formData);
+            const params = Object.assign({cPage: 1}, this.formData);
             $gridManager.setQuery('test', params, function () {
                 console.log('setQuery=>执行成功222');
             });

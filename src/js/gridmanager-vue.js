@@ -19,6 +19,24 @@ export default {
         const _parent = this.$parent;
         const methods = _parent.$options.methods;
 
+        // 存储Vue实例
+        let vueCache = [];
+
+        // 更新Vue存储实例
+        const updateVueCache = () => {
+            vueCache = vueCache.filter(vm => {
+                const { $el } = vm;
+                if (!window.getComputedStyle($el).display) {
+                    // 清除framework.send 后存在操作的DOM节点
+                    const tree = $el.querySelector('[tree-element]');
+                    tree && $el.removeChild(tree);
+
+                    vm.$destroy();
+                }
+                return !!window.getComputedStyle($el).display;
+            });
+        };
+
         // 包装ajaxSuccess
         const ajaxSuccess = this.option.ajaxSuccess;
         this.option.ajaxSuccess = (respones) => {
@@ -38,6 +56,7 @@ export default {
         this.option.compileVue = compileList => {
             let attributes = null;
             let children = null;
+            updateVueCache();
             return new Promise(resolve => {
                 compileList.forEach(item => {
                     const el = item.el;
@@ -68,13 +87,13 @@ export default {
                     Object.assign(dataMap, _parent.$data);
 
                     // create new vue
-                    new Vue({
+                    vueCache.push(new Vue({
                         parent: _parent,
                         el: el,
                         data: () => dataMap,
                         methods: methodsMap,
                         template: el.outerHTML
-                    });
+                    }));
                 });
                 resolve();
             });
