@@ -32,6 +32,56 @@ const getBlogList = function(paramse) {
     });
 };
 
+const getData = num => {
+    const data = [];
+    let child = [];
+
+    for (let i = 1; i<= num; i++) {
+        child = [];
+        for (let j = 1; j<= 40; j++) {
+            child.push({
+                "id": parseInt((i.toString() + j.toString()), 10),
+                "pic": '/upload/blog/pic/6717_%E5%AF%BC%E5%87%BA.png',
+                "author": "33",
+                "praiseNumber": "0",
+                "status": "1",
+                "readNumber": "111",
+                "title": "测试数据" + j,
+                "subtitle": "测试数据" + j,
+                "type": j % 5,
+                "info": "野生前端程序",
+                "createDate": 1579350185000,
+                "lastDate": 1579662679374,
+                "commentSum": 0,
+                "username": "拭目以待"
+            });
+        }
+        data.push({
+            "id": i,
+            "pic": '/upload/blog/pic/6717_%E5%AF%BC%E5%87%BA.png',
+            "author": "33",
+            "praiseNumber": "0",
+            "status": "1",
+            "readNumber": "111",
+            "title": "测试数据" + i,
+            "subtitle": "测试数据" + i,
+            "type": i % 5,
+            "info": "野生前端程序",
+            "createDate": 1579350185000,
+            "lastDate": 1579662679374,
+            "commentSum": 0,
+            "username": "拭目以待",
+            "children": child
+        });
+    }
+
+    return data;
+};
+var ajaxData2 = {
+    "data": getData(20),
+    "totals": 20
+};
+let now = Date.now();
 const app = new Vue({
     el: '#app',
     data: {
@@ -61,11 +111,8 @@ const app = new Vue({
         // 表格渲染回调函数
         // query为gmOptions中配置的query
         callback: function(query) {
-            console.log('callback => ', query);
+            console.log('callback => ', Date.now() - now);
         },
-
-        // 空文本
-        emptyText: '这个Vue表格, 什么数据也没有',
 
         // 类型
         TYPE_MAP: {
@@ -84,32 +131,44 @@ const app = new Vue({
             height: '100%',
             supportAjaxPage: true,
             supportSorting: true,
+            supportMoveRow: true,
             isCombSorting: false,
-            ajaxData: (settings, parsme) => {
-                return getBlogList(parsme);
+            autoOrderConfig: {
+                fixed: 'left'
             },
+            checkboxConfig: {
+                fixed: 'left'
+            },
+            ajaxData: (settings, params) => {
+                return getBlogList(params);
+            },
+            // ajaxData: ajaxData2,
+            // supportTreeData: true,
             ajaxType: 'POST',
             supportMenu: true,
             query: {test: 22},
             pageSize: 30,
-            emptyTemplate: '<section style="text-align: center">{{emptyText}}</section>',
-            // 顶部通栏
-            topFullColumn: {
-                template: function(row, index){
-                    return `<div style="padding: 12px; text-align: center;">
-                                {{index}} - 快速、灵活的对Table标签进行实例化，让Table标签充满活力。该项目已开源, <a target="_blank" href="https://github.com/baukh789/GridManager">点击进入</a>github
-                            </div>`;
-                }
+            emptyTemplate: settings => {
+                const emptyText = settings.query.title ? '搜索结果为空' : '这个Vue表格, 什么数据也没有';
+                return `<section style="text-align: center">${emptyText}</section>`;
             },
+            // 顶部通栏
+            // topFullColumn: {
+            //     template: function(row, index){
+            //         return `<div style="padding: 12px; text-align: center;">
+            //                     {{index}} - 快速、灵活的对Table标签进行实例化，让Table标签充满活力。该项目已开源, <a target="_blank" href="https://github.com/baukh789/GridManager">点击进入</a>github
+            //                 </div>`;
+            //     }
+            // },
             columnData: [
                 {
                     key: 'pic',
                     remind: 'the pic',
-                    width: '110px',
+                    width: '140px',
                     align: 'center',
                     text: '缩略图',
                     // vue template
-                    template: `<a target="_blank" style="display:block; height:58.5px;" :href="\'https://www.lovejavascript.com/#!zone/blog/content.html?id=\'+row.id" :title="\'点击阅读[\'+ row.title + \']\'">
+                    template: `<a target="_blank" style="display:inline-block; height:58.5px;" :href="\'https://www.lovejavascript.com/#!zone/blog/content.html?id=\'+row.id" :title="\'点击阅读[\'+ row.title + \']\'">
                                 <img style="width:90px;margin:0 auto;" :src="\'https://www.lovejavascript.com/\'+row.pic" :alt="row.title">
                             </a>`
                 }, {
@@ -190,6 +249,7 @@ const app = new Vue({
                     align: 'center',
                     width: '100px',
                     disableCustomize: true,
+                    fixed: 'right',
                     text: '<span style="color: red;" @click="actionAlert()">操作</span>',
                     // 使用@click
                     template: (action, row, index) => {
@@ -220,7 +280,7 @@ const app = new Vue({
         },
         // 事件: 搜索
         onSearch() {
-            var params = Object.assign({cPage: 1}, this.formData);
+            const params = Object.assign({cPage: 1}, this.formData);
             $gridManager.setQuery('test', params, function () {
                 console.log('setQuery=>执行成功222');
             });

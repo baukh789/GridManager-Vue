@@ -23,7 +23,7 @@ table .plugin-action:hover{
     padding: 10px 20px;
     border: 1px solid #ccc;
     background: #efefef;
-    margin-bottom: 15px;
+    margin: 0 10px 15px 10px;
 }
 .search-area .sa-ele{
     display: inline-block;
@@ -59,7 +59,9 @@ table .plugin-action:hover{
 }
 
 .grid-main {
-    height: calc(100% - 65px - 60px);
+    margin: 10px;
+    height: calc(100vh - 64px - 60px);
+    overflow: auto;
 }
 .bottom-bar{
     height: 50px;
