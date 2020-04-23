@@ -39,8 +39,8 @@ export default {
 
         // 解析Vue 模版, data中的row为固定元素
         this.option.compileVue = compileList => {
-            let attributes = null;
-            let children = null;
+            // let attributes = null;
+            // let children = null;
             updateVueCache();
             return new Promise(resolve => {
                 compileList.forEach(item => {
