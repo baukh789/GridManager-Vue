@@ -211,9 +211,21 @@ const app = new Vue({
 });
 ```
 
-### vue-class-component
-使用`vue-class-component`时，`GridManager`中所使用的this指向class，而非Vue.
-如果需要将this指向vue, 可以通过将`GridManager`的配置项写在created内来实现。
+### 关于配置项中的this指向
+#### 可能引起this指向错误的方式:
+- 表格配置项在data中配置时，配置项内所包含的函数this指向并不是VueComponents。
+- 使用Class声明方式时，配置项内所包含的函数this指向为class，而非VueComponents。
+
+#### 解决方法:
+可以通过将的配置项在在created内来实现，如:
+```
+created() {
+    this.gridOption = {
+        gridManagerName: 'test',
+        ... // 其它配置项
+    };
+}
+```
 
 ### 调用公开方法
 > 通过ES6语法，将$gridManager引入。如果使用`this.$gridManager`服务需要提前通过`Vue.use(GridManagerVue)`将`GridManagerVue`注册至全局组件。

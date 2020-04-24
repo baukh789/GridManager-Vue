@@ -17,8 +17,12 @@ export default {
     template: '<table></table>',
     mounted() {
         const _parent = this.$parent;
-        const methods = _parent.$options.methods;
+        const { methods, components } = _parent.$options;
 
+        console.log('_parent', _parent);
+        // for (const key in this.option) {
+        //     console.log(key);
+        // }
         // 存储Vue实例
         let vueCache = [];
 
@@ -65,7 +69,10 @@ export default {
                         el: el,
                         data: () => dataMap,
                         methods: methodsMap,
-                        template: el.outerHTML
+                        template: el.outerHTML,
+
+                        // 因为实际上表格组件重新创建了域，所以这块用来解决在表格中无法使用父组件所注册组件的问题
+                        components
                     }));
                 });
                 resolve();
