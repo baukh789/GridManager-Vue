@@ -52,31 +52,31 @@ npm install gridmanager-vue --save
 ## 项目中引用
 - es2015引入方式
 ```javascript
-import GridManagerReact, {$gridManager} from 'gridmanager-react';
-import 'gridmanager-react/css/gm-react.css';
+import GridManager from 'gridmanager-vue';
+import 'gridmanager-vue/css/gm-vue.css';
 ```
 
 - 通过script标签引入
 ```html
-<link rel="stylesheet" href="../node_modules/gridmanager-react/css/gm-react.css">
-<script src="../node_modules/gridmanager-react/js/gm-react.js"></script>
+<link rel="stylesheet" href="../node_modules/gridmanager-vue/css/gm-vue.css">
+<script src="../node_modules/gridmanager-vue/js/gm-vue.js"></script>
 ```
 ### Vue全局组件
 ```javascript
-import GridManagerVue from 'gridmanager-vue';
+import GridManager from 'gridmanager-vue';
 import 'gridmanager-vue/css/gm-vue.css';
-Vue.use(GridManagerVue);
+Vue.use(GridManager);
 ```
 
 ### Vue局部组件
 ```javascript
-import GridManagerVue from 'gridmanager-vue';
+import GridManager from 'gridmanager-vue';
 import 'gridmanager-vue/css/gm-vue.css';
 
 new Vue({
     el: '#app',
     components: {
-        GridManagerVue
+        GridManager
     }
 });
 ```
@@ -228,16 +228,16 @@ created() {
 ```
 
 ### 调用公开方法
-> 通过ES6语法，将$gridManager引入。如果使用`this.$gridManager`服务需要提前通过`Vue.use(GridManagerVue)`将`GridManagerVue`注册至全局组件。
+> 通过ES6语法，将GridManagerVue引入, 如果使用`this.$gridManager`服务需要提前通过`Vue.use(GridManagerVue)`将`GridManagerVue`注册至全局组件。
 
 ```javascript
-import GridManagerVue, { $gridManager } from 'gridmanager-vue';
-Vue.use(GridManagerVue);
+import GridManager, { $gridManager } from 'gridmanager-vue';
+Vue.use(GridManager);
 // 刷新
-$gridManager.refreshGrid('test-gm');  // 或 this.$gridManager.refreshGrid('test-gm');
+GridManager.refreshGrid('test-gm'); // 或 this.$gridManager.refreshGrid('test-gm');
 
 // 更新查询条件
-$gridManager.setQuery('test-gm', {name: 'baukh'});  // 或 this.$gridManager.setQuery('test-gm', {name: 'baukh'});
+GridManager.setQuery('test-gm', {name: 'baukh'});  // 或 this.$gridManager.setQuery('test-gm', {name: 'baukh'});
 
 // ...其它更多请直接访问API
 ```
@@ -245,7 +245,7 @@ $gridManager.setQuery('test-gm', {name: 'baukh'});  // 或 this.$gridManager.set
 ### 查看当前版本
 
 ```javascript
-import GridManagerVue, {$gridManager} from 'gridmanager-vue';
-console.log('GridManagerVue 的版本=>', GridManagerVue.version);
-console.log('GridManager 的版本=>', $gridManager.version);
+import GridManager, {$gridManager} from 'gridmanager-vue';
+console.log('GridManager Vue的版本=>', GridManager.version);
+console.log('GridManager 核心库的版本=>', $gridManager.version);
 ```

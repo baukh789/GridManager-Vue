@@ -19,6 +19,14 @@ if (typeof window !== 'undefined' && window.Vue) {
 // GridManagerVue 的版本号。 需要注意的是: 这仅仅是vue环境的壳, 验证功能需要查看GridManager的版本号
 GridManagerVue.version = process.env.VERSION;
 
+// 将原生方法，挂载至 Vue GridManager 上
+const staticList = Object.getOwnPropertyNames($gridManager);
+const noExtendsList = ['name', 'length', 'prototype', 'version'];
+staticList.forEach(key => {
+    if (!noExtendsList.includes(key)) {
+        GridManagerVue[key] = $gridManager[key];
+    }
+});
 export { $gridManager, jTool };
 export default GridManagerVue;
 

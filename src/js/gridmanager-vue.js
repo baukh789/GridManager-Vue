@@ -19,10 +19,6 @@ export default {
         const _parent = this.$parent;
         const { methods, components } = _parent.$options;
 
-        console.log('_parent', _parent);
-        // for (const key in this.option) {
-        //     console.log(key);
-        // }
         // 存储Vue实例
         let vueCache = [];
 
@@ -93,4 +89,3 @@ export default {
         $gridManager.destroy(this.option.gridManagerName);
     }
 };
-
