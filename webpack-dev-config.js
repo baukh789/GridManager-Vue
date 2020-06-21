@@ -14,6 +14,7 @@ const config = {
 	// 入口文件配置
 	entry: {
 		js: './demo/app.js'
+		// js: './demo/app-router.js'
 	},
 
     // 文件导出的配置

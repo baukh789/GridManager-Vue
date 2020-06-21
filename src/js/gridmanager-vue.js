@@ -87,5 +87,15 @@ export default {
     destroyed() {
         // 销毁实例
         $gridManager.destroy(this.option.gridManagerName);
+    },
+
+    /**
+     * keep-alive事件
+     */
+    activated() {
+        const settings = $gridManager.get(this.option.gridManagerName);
+        if (settings.rendered) {
+            $gridManager.resetLayout(this.option.gridManagerName, settings.width, settings.height)
+        }
     }
 };
