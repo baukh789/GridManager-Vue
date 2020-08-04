@@ -93,6 +93,11 @@ export default {
             });
         };
 
+        // 存在错误的 vue文件，其中的模板会污染表格组件中使用到的template
+        if (this.$el.nodeName !== 'TABLE') {
+            console.error('Wrong .vue: ', this.$el);
+            return;
+        }
         // 调用原生组件进行实例化
         new $gridManager(this.$el, this.option, query => {
             typeof(this.callback) === 'function' && this.callback(query);
