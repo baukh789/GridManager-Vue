@@ -17,24 +17,20 @@ export default {
     template: '<table></table>',
     mounted() {
         // 寻找真实的父级组件: 防止多层嵌套后methods丢失问题
-        let _parent = null;
+        let _parent = this.$parent;
         const setParent = obj => {
-            console.log('_parent', obj);
             if (!obj) {
-                throw new Error('请检查GridManager是否正确的传入了option');
+                return;
             }
-            const $data = obj.$data;
-            if ($data) {
-                for (let key in $data) {
-                    if ($data[key] === this.$props.option) {
-                        _parent = obj;
-                        return;
-                    }
+            for (let key in obj) {
+                if (obj[key] === this.$props.option) {
+                    _parent = obj;
+                    return;
                 }
             }
             setParent(obj.$parent);
         };
-        setParent(this.$parent);
+        setParent(_parent);
         const { methods, components } = _parent.$options;
 
         // 存储Vue实例
