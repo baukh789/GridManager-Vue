@@ -139,6 +139,16 @@ const app = new Vue({
             checkboxConfig: {
                 fixed: 'left'
             },
+            summaryHandler: data => {
+                let readNumber = 0;
+                data.forEach(item => {
+                    readNumber += item.readNumber;
+                });
+                return {
+                    title: '<span style="color: red" @click="actionAlert()">测试vue template</span>',
+                    readNumber
+                }
+            },
             ajaxData: (settings, params) => {
                 return getBlogList(params);
             },
@@ -216,6 +226,9 @@ const app = new Vue({
                 }, {
                     key: 'info',
                     text: '简介',
+                }, {
+                    key: 'readNumber',
+                    text: 'readNumber',
                 }, {
                     key: 'username',
                     remind: 'the username',
