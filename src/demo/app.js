@@ -225,7 +225,7 @@ const app = new Vue({
                     template: '<button type="button" @click="testClick(row)">{{TYPE_MAP[row.type]}}</button>'
                 }, {
                     key: 'info',
-                    text: '简介',
+                    text: '简介'
                 }, {
                     key: 'readNumber',
                     text: 'readNumber',
