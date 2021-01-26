@@ -89,7 +89,7 @@ const config = {
         new CleanPlugin([buildPath]),
         // 将样式文件 抽取至独立文件内
         new MiniCssExtractPlugin({
-            filename: 'css/gm-angular.css',
+            filename: 'css/gm-vue.css',
             chunkFilename: '[id].css'
         }),
 
