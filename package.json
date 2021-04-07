@@ -1,6 +1,6 @@
 {
     "name": "gridmanager-vue",
-    "version": "1.8.0",
+    "version": "1.9.0",
     "description": "gridmanager by vue",
     "main": "js/gm-vue.js",
     "scripts": {
