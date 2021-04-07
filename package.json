@@ -50,7 +50,7 @@
         "webpack-dev-middleware": "^3.7.0"
     },
     "dependencies": {
-        "gridmanager": "^2.14.20",
+        "gridmanager": "^2.15.0",
         "vue": "^2.5.2"
     }
 }
