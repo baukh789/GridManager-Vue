@@ -154,6 +154,7 @@ const app = new Vue({
             },
             // ajaxData: ajaxData2,
             // supportTreeData: true,
+            disableCache: false,
             ajaxType: 'POST',
             supportMenu: true,
             query: {test: 22},
