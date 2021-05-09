@@ -133,6 +133,7 @@ const app = new Vue({
             supportSorting: true,
             supportMoveRow: true,
             isCombSorting: false,
+            useCellFocus: true,
             autoOrderConfig: {
                 fixed: 'left'
             },
