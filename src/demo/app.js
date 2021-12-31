@@ -134,22 +134,26 @@ const app = new Vue({
             supportMoveRow: true,
             isCombSorting: false,
             useCellFocus: true,
+            virtualScroll: {
+                useVirtualScroll: true,
+                virtualNum: 20
+            },
             autoOrderConfig: {
                 fixed: 'left'
             },
             checkboxConfig: {
                 fixed: 'left'
             },
-            summaryHandler: data => {
-                let readNumber = 0;
-                data.forEach(item => {
-                    readNumber += item.readNumber;
-                });
-                return {
-                    title: '<span style="color: red" @click="actionAlert()">测试vue template</span>',
-                    readNumber
-                }
-            },
+            // summaryHandler: data => {
+            //     let readNumber = 0;
+            //     data.forEach(item => {
+            //         readNumber += item.readNumber;
+            //     });
+            //     return {
+            //         title: '<span style="color: red" @click="actionAlert()">测试vue template</span>',
+            //         readNumber
+            //     }
+            // },
             ajaxData: (settings, params) => {
                 return getBlogList(params);
             },
@@ -180,8 +184,8 @@ const app = new Vue({
                     align: 'center',
                     text: '缩略图',
                     // vue template
-                    template: `<a target="_blank" style="display:inline-block; height:58.5px;" :href="\'https://www.lovejavascript.com/#!zone/blog/content.html?id=\'+row.id" :title="\'点击阅读[\'+ row.title + \']\'">
-                                <img style="width:90px;margin:0 auto;" :src="\'https://www.lovejavascript.com/\'+row.pic" :alt="row.title">
+                    template: `<a target="_blank" style="display:inline-block;" :href="\'https://www.lovejavascript.com/#!zone/blog/content.html?id=\'+row.id" :title="\'点击阅读[\'+ row.title + \']\'">
+                                <img style="width:90px;height:58.5px;margin:0 auto;" :src="\'https://www.lovejavascript.com/\'+row.pic" :alt="row.title">
                             </a>`
                 }, {
                     key: 'title',
@@ -218,7 +222,7 @@ const app = new Vue({
                         ],
 
                         // 筛选选中项，字符串, 未存在选中项时设置为''。 在此设置的选中的过滤条件将会覆盖query
-                        selected: '3',
+                        selected: '',
 
                         // 否为多选, 布尔值, 默认为false。非必设项
                         isMultiple: false
