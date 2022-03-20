@@ -1,4 +1,4 @@
-# GridManager Vue
+# GridManager Vue[自3.0开始, 该库已与gridmanager合并]
 > 基于 Vue 的 GridManager 封装, 用于便捷的在 Vue 中使用GridManager. 除过Vue特性外，其它API与GridManager API相同。
 
 ![image](https://s2.ax1x.com/2019/04/16/AxA4xK.png)
